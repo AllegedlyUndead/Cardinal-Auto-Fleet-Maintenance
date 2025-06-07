@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --primary-color: #4A148C;
-      --secondary-color: #6A1B9A;
-      --background-light: #F3E5F5;
-      --text-color: #212121;
-      --accent-color: #CE93D8;
+      --primary-color: #C41E3A;
+      --secondary-color: #2C2C2C;
+      --background-light: #EEE7D7;
+      --accent-color: #FFB300;
+      --text-color: #1C1C1C;
     }
 
     * {
@@ -20,9 +20,59 @@
       box-sizing: border-box;
     }
 
+    .special-offer-popup {
+      position: fixed;
+      bottom: 40px;
+      right: 20px;
+      max-width: 400px;
+      background-color: #C41E3A;
+      color: white;
+      padding: 1.5rem 1.5rem 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+      font-family: 'Inter', sans-serif;
+      z-index: 9999;
+    }
+
+    #special-offer-title {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    #special-offer-title .line-break {
+      display: block;
+    }
+
+    .offer-text {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .close-btn {
+      background-color: white;
+      color: #C41E3A;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      float: right;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      background-color: #f0f0f0;
+      outline: none;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #fff;
+      background-color: #EEE7D7;
       color: var(--text-color);
       line-height: 1.6;
     }
@@ -55,6 +105,17 @@
       position: sticky;
       top: 0;
       z-index: 100;
+    }
+
+    #special-offer-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    #special-offer-title .line-break {
+      display: block;
     }
 
     nav a {
@@ -97,18 +158,24 @@
       position: relative;
       background: #fff;
       padding: 1.5rem;
+      border: 2px solid transparent;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
       flex: 1 1 300px;
       max-width: 350px;
       text-align: center;
       cursor: default;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, border 0.3s ease;
       overflow: visible;
     }
 
     .card:hover {
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--accent-color);
+    }
+
+    .card.expanded {
+      border: 2px solid var(--accent-color);
     }
 
     .card h3 {
@@ -141,10 +208,11 @@
       display: none;
       position: absolute;
       top: 100%;
-      left: 0;
-      min-width: 650px;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 700px;
       background: white;
-      border: 1px solid #ccc;
+      border: 2px solid var(--accent-color);
       border-radius: 10px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       z-index: 10;
@@ -173,6 +241,22 @@
       display: block;
     }
 
+    #oil-details {
+      left: 0 !important;
+      transform: none !important;
+    }
+
+    .oil-summary {
+      margin-bottom: 0.5rem;
+    }
+
+
+    #fluid-details {
+      left: auto !important;
+      right: 0 !important;
+      transform: none !important;
+    }
+
     footer {
       background: var(--primary-color);
       color: white;
@@ -190,6 +274,7 @@
 
       .card-content {
         position: static;
+        transform: none;
         min-width: 100%;
         margin-top: 1rem;
         box-shadow: none;
@@ -206,134 +291,230 @@
   </style>
 </head>
 <body>
+<header>
+  <h1>Cardinal Auto & Fleet Maintenance</h1>
+  <p>Mobile Auto Services Delivered with Professional Precision</p>
+</header>
 
-  <header>
-    <h1>Cardinal Auto & Fleet Maintenance</h1>
-    <p>Mobile Auto Services Delivered with Professional Precision</p>
-  </header>
+<nav aria-label="Main navigation">
+  <a href="index.html#">Home</a>
+  <a href="services.html">Services</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="tel:+13143298279">Call Us</a>
+</nav>
 
-  <nav aria-label="Main navigation">
-    <a href="index.html#home">Home</a>
-    <a href="services.html">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="tel:+13143298279">Call Us</a>
-  </nav>
+<div class="container">
 
-  <div class="container">
-    <!-- Automotive Services -->
-    <section class="service-section" id="automotive-services">
-      <h2 class="section-title">Automotive Services</h2>
-      <div class="cards">
-        <div class="card" id="oil-card">
-          <h3>Oil Change</h3>
-          <p>Full synthetic oil service starting at $75 + parts.</p>
-          <p style="text-align: center; font-weight: bold;">All oil changes include:</p>
-<ul style="list-style: none; padding-left: 0; text-align: center; max-width: 280px; margin: 0 auto;">
-  <li>✓ Tire pressure top-up</li>
-  <li>✓ Washer fluid top-up</li>
-  <li>✓ Battery health check</li>
-  <li>✓ Oil life monitor reset</li>
-</ul>
+  <!-- Automotive Services -->
+  <section class="service-section" id="automotive-services">
+    <h2 class="section-title">Automotive Services</h2>
+    <div class="cards">
 
-<button class="toggle-btn" id="toggle-oil-btn">See Add-Ons</button>
-          <div class="card-content" id="oil-details">
-            <table>
-              <thead>
-                <tr>
-                  <th>Add-On</th>
-                  <th>Individual Price</th>
-                  <th>Bundle Price</th>
-                  <th>Savings</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Air Filter</td>
-                  <td>$35</td>
-                  <td>$30</td>
-                  <td>$5</td>
-                </tr>
-                <tr>
-                  <td>Cabin Filter</td>
-                  <td>$40</td>
-                  <td>$35</td>
-                  <td>$5</td>
-                </tr>
-                <tr>
-                  <td>Wiper Blades</td>
-                  <td>$50</td>
-                  <td>$40</td>
-                  <td>$10</td>
-                </tr>
-                <tr>
-                  <td><strong>Full Bundle</strong></td>
-                  <td>$125</td>
-                  <td><strong>$95</strong></td>
-                  <td><strong>$30</strong></td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
-              <em>Bundle pricing is available only when oil and filter services are performed during the same appointment.</em>
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Brake Services</h3>
-          <p>Front or rear brake service starting at $225. Includes premium parts and labor warranty.</p>
-        </div>
-        <div class="card">
-          <h3>Filter & Wiper Replacement</h3>
-          <p>Air filters, cabin filters, and wiper blade installation available with any scheduled service.</p>
+      <!-- Oil Change -->
+      <div class="card" id="oil-card">
+        <h3>Mobile Oil Change</h3>
+        <p class="oil-summary">Full synthetic oil service starting at $75 + Oil and Filter.*</p>
+        <p style="font-weight: bold;">Oil changes include:</p>
+        <ul style="list-style: none; padding-left: 0;">
+          <li>✓ Tire pressure top-up</li>
+          <li>✓ Washer fluid top-up</li>
+          <li>✓ Battery health check</li>
+          <li>✓ Oil life monitor reset</li>
+        </ul>
+        <button class="toggle-btn" id="toggle-oil-btn">See Add-Ons</button>
+        <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">* Final price will vary based on vehicle</p>
+        <div class="card-content" id="oil-details">
+          <table>
+            <thead>
+              <tr>
+                <th>Add-On</th>
+                <th>Individual Price</th>
+                <th>Bundle Price</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Air Filter</td><td>$35</td><td>$30</td><td>$5</td></tr>
+              <tr><td>Cabin Filter</td><td>$40</td><td>$35</td><td>$5</td></tr>
+              <tr><td>Wiper Blades</td><td>$50</td><td>$40</td><td>$10</td></tr>
+              <tr><td><strong>Full Bundle</strong></td><td>$125</td><td><strong>$95</strong></td><td><strong>$30</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
+            <em>Bundle pricing available when performed with oil and filter service.</em>
+          </p>
         </div>
       </div>
-    </section>
 
-    <!-- Fleet Services -->
-    <section class="service-section" id="fleet-services">
-      <h2 class="section-title">Fleet Services</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Fleet Maintenance Plans</h3>
-          <p>Custom-tailored maintenance schedules to keep your business vehicles running reliably and efficiently.</p>
-        </div>
-        <div class="card">
-          <h3>Priority Mobile Service</h3>
-          <p>We come to your lot or job site. Minimize downtime with flexible service windows and responsive dispatching.</p>
-        </div>
-        <div class="card">
-          <h3>Volume Discounts</h3>
-          <p>Special pricing for fleets with 5+ vehicles. Ask about monthly billing and service tracking options.</p>
+      <!-- Brake Services -->
+      <div class="card" id="brake-card">
+        <h3>Mobile Brake Services</h3>
+        <p>Starting at $225. Includes premium parts and labor warranty.</p>
+        <p style="font-weight: bold;">Brake service includes:</p>
+        <ul style="list-style: none; padding-left: 0;">
+          <li>✓ Brake fluid top-up</li>
+          <li>✓ Brake system inspection</li>
+          <li>✓ Lifetime warranty on pads</li>
+        </ul>
+        <button class="toggle-btn" id="toggle-brake-btn">See Details</button>
+        <div class="card-content" id="brake-details">
+          <table>
+            <thead>
+              <tr>
+                <th>Service Option</th>
+                <th>Front or Rear</th>
+                <th>Front + Rear</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Brake Pads Replacement</td><td>$225</td><td>$425</td><td>$25</td></tr>
+              <tr><td>Pads & Rotors Replacement</td><td>$375</td><td>$700</td><td>$50</td></tr>
+              <tr><td>Caliper Replacement (Each)</td><td>$150</td><td>—</td><td>—</td></tr>
+              <tr><td>Pads, Rotors & Calipers</td><td>$500</td><td>$950</td><td>$50</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
+            <em>Savings apply when front and rear services are performed during the same appointment.</em>
+          </p>
         </div>
       </div>
-    </section>
-  </div>
 
-  <footer>
-    <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
-    <p>Email: info@cardinalautofleet.com | Phone: (314) 329-8279</p>
-  </footer>
+      <!-- Fluid Flushes -->
+      <div class="card" id="fluid-card">
+        <h3>Mobile Fluid Flush Services</h3>
+        <p>Protect vital systems with professional fluid flushes. Bundle discounts avaible when bundled with oil change or brake service.</p>
+        <button class="toggle-btn" id="toggle-fluid-btn">See Details</button>
+        <div class="card-content" id="fluid-details">
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Standalone Price</th>
+                <th>With Other Service</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Brake Fluid Flush</td><td>$105</td><td>$90</td><td>$15</td></tr>
+              <tr><td>Coolant/Antifreeze Flush</td><td>$125</td><td>$110</td><td>$15</td></tr>
+              <tr><td>Transmission Fluid Flush</td><td>$175</td><td>$150</td><td>$25</td></tr>
+              <tr><td>Power Steering Fluid Flush</td><td>$95</td><td>$80</td><td>$15</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
+            <em>Bundled pricing applies when performed with any oil or brake service during the same appointment.</em>
+          </p>
+        </div>
+      </div>
+    </div>
 
-  <script>
-    const oilCard = document.getElementById('oil-card');
-    const oilDetails = document.getElementById('oil-details');
-    const toggleBtn = document.getElementById('toggle-oil-btn');
+    <div id="special-offer-popup" class="special-offer-popup" style="display:none;">
+      <strong id="special-offer-title">
+        💥 Special Offer - Bundle &amp; Save!
+      </strong>
+      <p class="offer-text">
+        Save up to <strong>$25</strong> when you combine a fluid flush with any oil change or brake service, done same day at your location.
+      </p>
+      <button id="close-offer-btn" class="close-btn" aria-label="Close special offer popup">Close</button>
+    </div>
+  </section>
 
-    toggleBtn.addEventListener('click', (e) => {
+  <!-- Fleet Services -->
+  <section class="service-section" id="fleet-services">
+    <h2 class="section-title">Fleet Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Fleet Maintenance Plans</h3>
+        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
+      </div>
+      <div class="card">
+        <h3>Priority Mobile Service</h3>
+        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
+      </div>
+      <div class="card">
+        <h3>Volume Discounts</h3>
+        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
+  <p>Email: info@cardinalautofleet.com | Phone: (314) 329-8279</p>
+</footer>
+
+<script>
+  // Show popup after 3 seconds
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const popup = document.getElementById('special-offer-popup');
+      popup.style.display = 'block';
+    }, 3000);
+  });
+
+  // Close button handler
+  document.getElementById('close-offer-btn').addEventListener('click', () => {
+    const popup = document.getElementById('special-offer-popup');
+    popup.style.display = 'none';
+  });
+
+  const toggleButtons = [
+    {
+      card: document.getElementById('oil-card'),
+      details: document.getElementById('oil-details'),
+      button: document.getElementById('toggle-oil-btn'),
+      labelOpen: 'Hide Add-Ons',
+      labelClosed: 'See Add-Ons'
+    },
+    {
+      card: document.getElementById('brake-card'),
+      details: document.getElementById('brake-details'),
+      button: document.getElementById('toggle-brake-btn'),
+      labelOpen: 'Hide Details',
+      labelClosed: 'See Details'
+    },
+    {
+      card: document.getElementById('fluid-card'),
+      details: document.getElementById('fluid-details'),
+      button: document.getElementById('toggle-fluid-btn'),
+      labelOpen: 'Hide Details',
+      labelClosed: 'See Details'
+    }
+  ];
+
+  toggleButtons.forEach(({ card, details, button, labelOpen, labelClosed }, index, allButtons) => {
+    button.addEventListener('click', (e) => {
       e.stopPropagation();
-      oilDetails.classList.toggle('expanded');
-      toggleBtn.textContent = oilDetails.classList.contains('expanded') ? 'Hide Add-Ons' : 'See Add-Ons';
-    });
+      const isOpen = details.classList.contains('expanded');
 
-    document.addEventListener('click', function(event) {
-      const isClickInside = oilCard.contains(event.target);
-      if (!isClickInside && oilDetails.classList.contains('expanded')) {
-        oilDetails.classList.remove('expanded');
-        toggleBtn.textContent = 'See Add-Ons';
+      allButtons.forEach(({ card, details, button, labelClosed }) => {
+        details.classList.remove('expanded');
+        card.classList.remove('expanded');
+        button.textContent = labelClosed;
+      });
+
+      if (!isOpen) {
+        details.classList.add('expanded');
+        card.classList.add('expanded');
+        button.textContent = labelOpen;
       }
     });
-  </script>
+  });
 
+  document.addEventListener('click', function(event) {
+    const isClickInside = toggleButtons.some(({ card }) => card.contains(event.target));
+    if (!isClickInside) {
+      toggleButtons.forEach(({ card, details, button, labelClosed }) => {
+        details.classList.remove('expanded');
+        card.classList.remove('expanded');
+        button.textContent = labelClosed;
+      });
+    }
+  });
+</script>
 </body>
 </html>
