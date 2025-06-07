@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | Cardinal Auto & Fleet Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-color: #C41E3A;
+      --secondary-color: #2C2C2C;
+      --background-light: #EEE7D7;
+      --accent-color: #FFB300;
+      --text-color: #1C1C1C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--background-light); color: var(--text-color); line-height: 1.6; }
+    header { background: var(--primary-color); color: white; padding: 1rem; text-align: center; }
+    header h1 { font-size: 2.75rem; margin-bottom: -0.5rem; font-weight: 700; }
+    header p { font-size: 1.15rem; opacity: 0.95; }
+
+    nav {
+      background: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .hamburger { display: none; background: none; border: none; font-size: 2rem; color: white; cursor: pointer; padding: 0.5rem 1rem; }
+    .nav-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; margin: auto; }
+      .nav-links { display: none; flex-direction: column; width: 100%; text-align: center; background: var(--secondary-color); padding: 1rem 0; }
+      .nav-links.show { display: flex; }
+      nav { flex-direction: column; gap: 1rem; }
+      header h1 { font-size: 2rem; }
+    }
+    nav a { color: white; text-decoration: none; font-weight: 600; padding: 0.5rem; transition: color 0.3s ease; }
+    nav a:hover { color: var(--accent-color); }
+
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; background: white; border-radius: 8px; }
+
+    h2.section-title { font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem; text-align: center; }
+
+    p, ul { margin: 1rem 0; }
+    ul { padding-left: 1.25rem; list-style: disc; }
+
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; display: none; background: var(--primary-color);
+      color: white; border: none; border-radius: 50%; padding: 0.75rem 1rem; font-size: 1.25rem; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3); transition: opacity 0.3s ease;
+      z-index: 999;
+    }
+    #backToTop:hover { background: var(--accent-color); color: black; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cardinal Auto & Fleet Maintenance</h1>
+    <p>Mobile Auto Services Delivered with Professional Precision</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:+13143298279">Call Us</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2 class="section-title">Privacy Policy</h2>
+
+    <h3>Effective Date: June 7, 2025</h3>
+
+    <p>At Cardinal Auto & Fleet Maintenance, we respect your privacy. This policy explains what data we collect, how it's used, and your rights.</p>
+
+    <h3>What We Collect</h3>
+    <ul>
+      <li>Name, email, phone, vehicle info (make, model, year)</li>
+      <li>Appointment details and service history</li>
+      <li>Usage data (website visits, browser data)</li>
+    </ul>
+
+    <h3>How We Use It</h3>
+    <ul>
+      <li>To schedule and confirm services</li>
+      <li>To respond to inquiries and send updates</li>
+      <li>To improve services and the website experience</li>
+    </ul>
+
+    <h3>Security</h3>
+    <p>We use reasonable security measures, but no internet transmission is completely safe. We cannot guarantee full data security.</p>
+
+    <h3>Third-Party Sharing</h3>
+    <p>We do not sell or rent your data. We share it only with trusted service providers (e.g., booking or payment platforms).</p>
+
+    <h3>Your Rights</h3>
+    <p>You can request to view, update, or delete your personal data by contacting us at <a href="mailto:info@cardinalautofleet.com">info@cardinalautofleet.com</a>.</p>
+
+    <h3>Policy Updates</h3>
+    <p>We may update this policy occasionally. The latest version and effective date will always be posted here.</p>
+
+    <h3>Contact Us</h3>
+    <p>Email: <a href="mailto:info@cardinalautofleet.com">info@cardinalautofleet.com</a><br>
+       Phone: <a href="tel:+13143298279">(314) 329-8279</a></p>
+  </div>
+
+  <button id="backToTop" title="Back to Top">↑</button>
+
+  <footer>
+    <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
+    <p>
+      Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
+      <a href="terms.html" style="color: #fff; text-decoration: underline;">Terms and Conditions</a> |
+      <a href="privacy.html" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      const nav = document.querySelector('.nav-links');
+      nav.classList.toggle('show');
+      const expanded = document.activeElement.getAttribute('aria-expanded') === 'true';
+      document.activeElement.setAttribute('aria-expanded', !expanded);
+    });
+
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

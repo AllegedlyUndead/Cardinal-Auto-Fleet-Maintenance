@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Cardinal Auto & Fleet Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #C41E3A;
+      --secondary-color: #2C2C2C;
+      --background-light: #FAF7F1;
+      --accent-color: #FFB300;
+      --text-color: #1C1C1C;
+      --icon-color: #D62B43;
+      --button-gradient-start: #C41E3A;
+      --button-gradient-end: #FF5733;
+      --shadow-light: rgba(0,0,0,0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+     header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      margin-bottom: -0.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--secondary-color);
+        padding: 1rem 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    /* Hero banner intro */
+    .intro-banner {
+      background: linear-gradient(135deg, #F9E2D2 0%, #E8D7C3 100%);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 10px 20px var(--shadow-light);
+      margin-bottom: 3rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-style: italic;
+      letter-spacing: 0.03em;
+      user-select: none;
+    }
+
+    /* Section titles */
+    h2.section-title {
+      font-size: 2.25rem;
+      color: var(--primary-color);
+      margin-bottom: 1.25rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
+    }
+
+    /* Fade & slide up animation */
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* About Us section */
+    .about-content {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px var(--shadow-light);
+      margin-bottom: 3rem;
+      font-size: 1.15rem;
+      color: #222;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeSlideIn 1s forwards;
+      animation-delay: 0.3s;
+      line-height: 1.65;
+    }
+    .about-content p + p {
+      margin-top: 1.1rem;
+    }
+
+    /* Mission */
+    .mission {
+      background: white;
+      padding: 2.75rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px var(--shadow-light);
+      margin-bottom: 3rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeSlideIn 1s forwards;
+      animation-delay: 0.6s;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Core Values */
+    .core-values {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px var(--shadow-light);
+      margin-bottom: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeSlideIn 1s forwards;
+      animation-delay: 0.9s;
+    }
+
+    .core-values h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--primary-color);
+      font-size: 2rem;
+    }
+
+    .values-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .value-item {
+      flex: 1 1 250px;
+      text-align: center;
+      padding: 0 1rem;
+      user-select: none;
+    }
+
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1rem;
+      fill: var(--icon-color);
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+      transition: transform 0.3s ease;
+    }
+    .value-item:hover .value-icon {
+      transform: scale(1.1);
+    }
+
+    .value-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      letter-spacing: 0.01em;
+    }
+
+    .value-desc {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Meet The Team */
+    .team-section {
+      background: white;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px var(--shadow-light);
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeSlideIn 1s forwards;
+      animation-delay: 1.2s;
+    }
+
+    .team-section h2 {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .team-members {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      max-width: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px var(--shadow-light);
+      transition: box-shadow 0.3s ease;
+      background: white;
+      cursor: default;
+    }
+
+    .team-member:hover {
+      box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+    }
+
+    .team-photo {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 220px;
+      transition: transform 0.3s ease;
+      filter: grayscale(25%);
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .team-member:hover .team-photo {
+      filter: grayscale(0);
+      transform: scale(1.05);
+    }
+
+    .member-info {
+      padding: 1rem 1.25rem;
+    }
+
+    .member-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: var(--secondary-color);
+    }
+
+    .member-role {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+    }
+
+    /* Call to action */
+    .cta-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(196, 30, 58, 0.7);
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .cta-button:hover {
+      background: linear-gradient(135deg, var(--button-gradient-end), var(--button-gradient-start));
+      box-shadow: 0 10px 30px rgba(255, 87, 51, 0.85);
+      transform: translateY(-3px);
+    }
+    .cta-button:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 18px rgba(196, 30, 58, 0.7);
+    }
+
+     footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cardinal Auto & Fleet Maintenance</h1>
+    <p>Your Trusted Mobile Auto Service Partner</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="tel:+13143298279">Call Us</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="intro-banner" aria-label="Welcome message">
+      At Cardinal Auto & Fleet Maintenance, we bring the garage to you — professional, convenient, and reliable mobile auto services for individuals and businesses alike.
+    </section>
+
+    <section aria-labelledby="about-heading" class="about-content">
+      <h2 id="about-heading" class="section-title">Who We Are</h2>
+      <p>Established in 2025, Cardinal Auto & Fleet Maintenance is committed to delivering expert mobile vehicle maintenance and repair services tailored to your needs. We’re passionate about keeping your cars, trucks, and fleets running safely and efficiently — all without the inconvenience of traditional shop visits.</p>  
+      <p>Our mobile technicians are fully equipped to handle your routine maintenance including oil changes, fluid flushes, and brake repairs, all performed right at your doorstep or job site.</p>
+    </section>
+
+    <section class="core-values" aria-labelledby="values-heading">
+      <h2 id="values-heading">Core Values</h2>
+      <div class="values-list">
+        <div class="value-item" tabindex="0" aria-label="Integrity - We are honest and transparent in all our work.">
+          <svg class="value-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true" >
+            <circle cx="32" cy="32" r="30" stroke="none" fill="#D62B43"/>
+            <path fill="#fff" d="M32 12a20 20 0 1 1 0 40 20 20 0 0 1 0-40zm0 36a16 16 0 1 0 0-32 16 16 0 0 0 0 32z"/>
+            <path fill="#fff" d="M30 18h4v14h-4zM30 38h4v4h-4z"/>
+          </svg>
+          <h3 class="value-title">Integrity</h3>
+          <p class="value-desc">We are honest and transparent in all our work.</p>
+        </div>
+        <div class="value-item" tabindex="0" aria-label="Reliability - Dependable services you can trust, anytime.">
+          <svg class="value-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" stroke="none" fill="#D62B43"/>
+            <path fill="#fff" d="M44 32a12 12 0 1 1-24 0 12 12 0 0 1 24 0zM32 40a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
+            <path fill="#fff" d="M30 28h4v12h-4z"/>
+          </svg>
+          <h3 class="value-title">Reliability</h3>
+          <p class="value-desc">Dependable services you can trust, anytime.</p>
+        </div>
+        <div class="value-item" tabindex="0" aria-label="Customer Focus - We prioritize your satisfaction and convenience.">
+          <svg class="value-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" stroke="none" fill="#D62B43"/>
+            <path fill="#fff" d="M34 24h-4v12h4z"/>
+            <circle fill="#fff" cx="32" cy="40" r="4"/>
+          </svg>
+          <h3 class="value-title">Customer Focus</h3>
+          <p class="value-desc">We prioritize your satisfaction and convenience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section" aria-labelledby="team-heading">
+      <h2 id="team-heading">Meet the Team</h2>
+      <div class="team-members">
+        <article class="team-member" tabindex="0" aria-label="Jesse, Lead Technician">
+          <img src="https://via.placeholder.com/200x220?text=Jesse" alt="Photo of Jesse, Mobile Technician" class="team-photo" />
+          <div class="member-info">
+            <h3 class="member-name">Jesse</h3>
+            <p class="member-role">Mobile Technician</p>
+          </div>
+        </article>
+        <article class="team-member" tabindex="0" aria-label="Sophia, Customer Relations">
+          <img src="https://via.placeholder.com/200x220?text=Sophia" alt="Photo of Sophia, Scheduling Expert" class="team-photo" />
+          <div class="member-info">
+            <h3 class="member-name">Lauren</h3>
+            <p class="member-role">Scheduling Expert</p>
+          </div>
+        </article>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-label="Call to action">
+      <button class="cta-button" onclick="location.href='contact.html'">Schedule Your Service Today</button>
+    </section>
+  </main>
+
+  <footer>
+  <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
+  <p>
+    Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
+    <a href="terms.html" style="color: #fff; text-decoration: underline;">Terms and Conditions</a> |
+    <a href="privacy.html" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
+  </p>
+</footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
