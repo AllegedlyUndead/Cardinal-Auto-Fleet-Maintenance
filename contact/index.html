@@ -94,49 +94,6 @@
       padding: 0 1rem;
     }
 
-    form {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: 600;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.25rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-
-    textarea { resize: vertical; min-height: 80px; }
-
-    button#submit-btn {
-      margin-top: 1.5rem;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.25rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease;
-    }
-
-    button#submit-btn:hover { background-color: #9f1830; }
-
     footer {
       background: var(--primary-color);
       color: white;
@@ -170,8 +127,22 @@
     #toast.success { background-color: #28a745; }
     #toast.error { background-color: #dc3545; }
 
+    /* Booking section styling */
+    .booking-section {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+
+    .booking-section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
   </style>
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -195,43 +166,10 @@
     <p><strong>Notice:</strong> We're currently updating our website to serve you better, please pardon the mess!</p>
   </section>
 
-  <section class="container">
-    <h2>Book an Appointment</h2>
-    <form id="checkout-form" novalidate>
-      <label for="name">Name *</label>
-      <input type="text" id="name" name="name" required placeholder="Your full name" />
-
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required placeholder="you@example.com" />
-
-      <label for="phone">Phone Number *</label>
-      <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890" />
-
-      <label for="service">Service *</label>
-      <select id="service" name="service" required>
-        <option value="" disabled selected>Select a service</option>
-        <option value="oil-change">Oil Change</option>
-        <option value="brake-service">Brake Service</option>
-        <option value="fluid-service">Fluid Service</option>
-      </select>
-
-      <label for="comments">Additional Comments</label>
-      <textarea id="comments" name="comments" placeholder="Any special requests or questions?"></textarea>
-
-      <p style="font-size: 0.9rem; color: #555; margin-top: 0.5rem;">
-        <strong>Note:</strong> A $35 authorization hold will be placed on your card. You will only be charged if the appointment is missed or canceled without notice.
-      </p>
-
-      <button id="submit-btn" type="submit">Book Now</button>
-
-      <!-- Spinner -->
-      <div id="loading-spinner" style="display:none; text-align: center; margin-top: 1rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="var(--primary-color)" stroke-width="2" class="spin">
-          <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
-          <path d="M4 12a8 8 0 018-8" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </form>
+  <section class="booking-section">
+    <h2>Book Your Appointment</h2>
+    <!-- Square Appointments Embed -->
+    <script src='https://square.site/appointments/buyer/widget/qnk5ae4buk9l32/LE9FXED866EZG.js'></script>
   </section>
 
   <footer>
@@ -245,94 +183,12 @@
   <div id="toast"></div>
 
   <script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-
-  const stripe = Stripe('pk_test_51RXTenIEj2bCDufJWGhWsLJYq7mdZYuJqPRr7k4YwgIKKqFpHAxPVSFmDcwzVfVViyPVdgNwYNRtntVU68vx2PlG00cHF3sYhO');
-
-  const form = document.getElementById('checkout-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const toast = document.getElementById('toast');
-  const spinner = document.getElementById('loading-spinner');
-
-  function showToast(message, type = 'success') {
-    toast.textContent = message;
-    toast.className = '';
-    toast.classList.add('show', type);
-    setTimeout(() => toast.classList.remove('show'), 3500);
-  }
-
-  function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const fakeDomains = ['example.com', 'test.com', 'fake.com'];
-    const domain = email.split('@')[1]?.toLowerCase();
-    return emailRegex.test(email) && !fakeDomains.includes(domain);
-  }
-
-  function isValidPhone(phone) {
-    const digits = phone.replace(/\D/g, '');
-    return digits.length === 10 && !/^(\d)\1{9}$/.test(digits);
-  }
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    submitBtn.disabled = true;
-    spinner.style.display = 'block';
-
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const service = form.service.value;
-    const comments = form.comments.value.trim();
-
-    if (!name || !email || !phone || !service) {
-      showToast('Please fill out all required fields.', 'error');
-      submitBtn.disabled = false;
-      spinner.style.display = 'none';
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showToast('Invalid email.', 'error');
-      submitBtn.disabled = false;
-      spinner.style.display = 'none';
-      return;
-    }
-
-    if (!isValidPhone(phone)) {
-      showToast('Invalid phone number.', 'error');
-      submitBtn.disabled = false;
-      spinner.style.display = 'none';
-      return;
-    }
-
-    try {
-      // Call backend to create Stripe Checkout Session in SETUP mode (authorize card for later)
-      const res = await fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, service, comments })
-      });
-
-      if (!res.ok) throw new Error('Network response was not ok');
-
-      const { sessionId } = await res.json();
-
-      if (!sessionId) throw new Error('Missing session ID from server');
-
-      // Redirect user to Stripe Checkout page to complete setup
-      await stripe.redirectToCheckout({ sessionId });
-    } catch (err) {
-      console.error(err);
-      showToast('Error starting checkout. Please try again.', 'error');
-      submitBtn.disabled = false;
-      spinner.style.display = 'none';
-    }
-  });
-</script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
 
 </body>
 </html>
