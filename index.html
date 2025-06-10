@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cardinal Auto & Fleet Maintenance</title>
+  <title>Cardinal Auto & Fleet Maintenance | Mobile Oil Changes & Brake Service in St. Louis</title>
+  <meta name="description" content="Cardinal Auto & Fleet Maintenance offers expert mobile oil changes, brake services, and fleet maintenance across St. Louis. Certified technicians come to your home or workplace for convenient, reliable auto care." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -104,14 +105,15 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a[aria-current="page"] {
       color: var(--accent-color);
     }
 
     .container {
       max-width: 1100px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
     .hero {
@@ -121,7 +123,9 @@
       padding: 4rem 2rem;
       border-radius: 12px;
       text-align: center;
-      margin-top: -2rem;
+      margin-top: -1rem;
+      background-color: #fff; /* Added subtle background for better contrast */
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
 
     .hero h2 {
@@ -136,9 +140,13 @@
       margin: 0 auto;
     }
 
+    .hero .btn-primary {
+      margin-top: 1.5rem;
+    }
+
     .btn-primary {
       display: inline-block;
-      margin-top: 1.5rem;
+      margin-top: .5rem;
       background-color: var(--primary-color);
       color: #ffffff !important;
       padding: 0.75rem 1.5rem;
@@ -146,18 +154,19 @@
       text-decoration: none !important;
       font-weight: 600;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      transform: translateY(0);
       transition: all 0.3s ease;
+      user-select: none;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:focus {
       background-color: var(--secondary-color);
+      outline: none;
       transform: translateY(-2px);
     }
 
     #services {
       margin-bottom: 3rem;
-      margin-top: -0.5rem;
     }
 
     #services .card h3,
@@ -167,11 +176,18 @@
       margin-right: auto;
     }
 
+    .oil-card,
+    .brake-card {
+      margin-bottom: -2rem; /* your desired margin */
+    }
+
+
     .features, .why-us {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       margin-top: 3rem;
+      justify-content: center;
     }
 
     .card {
@@ -188,32 +204,70 @@
       background-color: white;
       color: black;
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      user-select: none;
     }
 
-    .card h3,
-    .card p {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0.5rem;
-      padding: 0;
-      background: none;
-      color: var(--text-color);
+    .card:hover,
+    .card:focus-within {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+      outline: none;
+      cursor: pointer;
     }
 
-    .oil-card {
-      background: white;
+    .card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--primary-color);
     }
 
-    .oil-card p {
+    .card p.price {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--accent-color);
       margin-bottom: 0.75rem;
     }
 
-    .brake-card {
-      background: white;
+    #about .card {
+      text-align: left;
+      height: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
     }
 
-    .fleet-card {
-      background: white;
+    #about h3 {
+      margin-bottom: 1rem;
+      padding: 0;
+    }
+
+    #about ul {
+      list-style: none;
+      padding-left: 1.5rem;
+      color: var(--text-color);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    #about ul li {
+      position: relative;
+      margin-bottom: 0.75rem;
+      padding-left: 2rem;
+    }
+
+    #about ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+      top: 2px;
+      line-height: 1;
+    }
+
+    #about ul li strong {
+      color: var(--primary-color);
     }
 
     #contact {
@@ -222,6 +276,8 @@
       border-radius: 10px;
       margin-top: 4rem;
       color: var(--text-color);
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
     #contact h2 {
@@ -236,24 +292,10 @@
       text-decoration: underline;
     }
 
-    .card ul {
-      list-style: none;
-      padding-left: 1rem;
-      color: var(--text-color);
-    }
-
-    .card ul li {
-      position: relative;
-      margin-bottom: 0.5rem;
-      padding-left: 1.2rem;
-    }
-
-    .card ul li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      color: var(--accent-color);
-      font-weight: bold;
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      user-select: text;
     }
 
     footer {
@@ -263,6 +305,12 @@
       padding: 2rem 1rem;
       margin-top: 4rem;
       font-size: 0.95rem;
+      user-select: none;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -282,6 +330,14 @@
       .hero h2 {
         font-size: 1.75rem;
       }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      #about .card {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -295,7 +351,7 @@
   <nav aria-label="Main navigation">
     <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
-      <a href="/">Home</a>
+      <a href="/" aria-current="page">Home</a>
       <a href="/services">Services</a>
       <a href="/about">About</a>
       <a href="/schedule">Schedule</a>
@@ -303,70 +359,87 @@
     </div>
   </nav>
 
-  <section style="background-color: #fff3cd; color: #856404; text-align: center; padding: 0.75rem 1rem; font-size: 0.95rem; border-bottom: 1px solid #ffeeba;">
+  <section style="background-color: #fff3cd; color: #856404; text-align: center; padding: 0.75rem 1rem; font-size: 0.95rem; border-bottom: 1px solid #ffeeba;" role="alert" aria-live="polite">
     <p><strong>Notice:</strong> We're currently updating our website to serve you better, please pardon the mess!</p>
   </section>
 
   <div class="container">
-    <section class="hero">
-      <h2>Expert Automotive Care—Anywhere You Need It</h2>
-      <p>We specialize in mobile oil changes, brake jobs, and fleet maintenance across the St. Louis area. Service that comes to you.</p>
+    <section class="hero" role="region" aria-label="Introduction">
+      <h2>Expert Mobile Oil Changes, Brake Services, and Fleet Maintenance: Delivered to Your Doorstep in St. Louis</h2>
+      <p>We specialize in mobile oil changes, brake jobs, and fleet maintenance across the St. Louis area. Fast, convenient, and reliable service when and where you need it.</p>
       <a href="/services" class="btn-primary" aria-label="Explore our services">Explore Services</a>
     </section>
 
-    <section id="services" class="features">
-      <div class="card oil-card">
-        <h3>Mobile Oil Change</h3>
-        <p>Starting at $75 + Oil and Filter.</p>
-        <p>Full synthetic oil change service delivered to your home or workplace.</p>
-        <p>Add-ons available for air filters, wiper blades, and more.</p>
-      </div>
+    <section id="services" class="features" aria-label="Our Services">
+  <div class="card oil-card" tabindex="0" role="article" aria-labelledby="oil-change-title">
+    <h3 id="oil-change-title">Mobile Oil Change</h3>
+    <p class="price">Starting at $75 + Oil and Filter</p>
+    <p>Full synthetic oil change service delivered to your home, workplace, or job site.</p>
+    <p>Add-ons available for air filters, wiper blades, and more.</p>
+  </div>
 
-      <div class="card brake-card">
-        <h3>Mobile Brake Services</h3>
-        <p>Starting at $225. Includes premium parts and labor warranty.</p>
-        <p>Mobile brake service brought directly to your home or workplace.</p>
-        <p>Convenient, efficient, and designed to fit your schedule.</p>
-      </div>
+  <div class="card brake-card" tabindex="0" role="article" aria-labelledby="brake-service-title">
+    <h3 id="brake-service-title">Mobile Brake Services</h3>
+    <p class="price">Starting at $225</p>
+    <p>Mobile brake service brought directly to your home, workplace, or job site.</p>
+    <p>Convenient, efficient, and designed to fit your schedule.</p>
+  </div>
+</section>
 
-      <div class="card fleet-card">
-        <h3>Fleet Packages</h3>
-        <p><strong>COMING SOON</strong></p>
-      </div>
-    </section>
+<section class="features" aria-label="Additional Services">
+  <div class="card fluid-flush-card" tabindex="0" role="article" aria-labelledby="fluid-flush-title">
+    <h3 id="fluid-flush-title">Fluid Flush Services</h3>
+    <p class="price">Starting at $80 when bundled</p>
+    <p>Maintain optimal vehicle performance with our professional fluid flushes, including transmission, coolant, brake, and power steering systems.</p>
+  </div>
 
-    <section id="about" class="why-us">
-      <div class="card" style="background:#fff; color: var(--text-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-        <h3 style="background:none; color:var(--primary-color); padding: 0;">Why Choose Cardinal?</h3>
+  <div class="card tune-up-card" tabindex="0" role="article" aria-labelledby="tune-up-title">
+    <h3 id="tune-up-title">Comprehensive Tune-Ups</h3>
+    <p>Keep your vehicle running smoothly with expert tune-ups including spark plug replacement, engine diagnostics, and system inspections.</p>
+    <p>Improve fuel efficiency, performance, and reliability with our thorough maintenance service.</p>
+  </div>
+
+  <div class="card fleet-card" tabindex="0" role="article" aria-labelledby="fleet-packages-title" aria-live="polite">
+    <h3 id="fleet-packages-title">Fleet Packages</h3>
+    <p><strong>Launching Soon!</strong></p>
+  </div>
+</section>
+
+
+    <section id="about" class="why-us" aria-label="Why Choose Cardinal">
+      <div class="card">
+        <h3>Why Choose Cardinal?</h3>
         <ul>
-          <li>Transparent, Upfront Pricing</li>
-          <li>Convenient Scheduling</li>
-          <li>Service at Your Location</li>
-          <li>Dedicated to Quality & Trust</li>
+          <li><strong>Transparent, Upfront Pricing:</strong> No hidden fees, clear quotes every time.</li>
+          <li><strong>Convenient Scheduling:</strong> Easy booking tailored to your availability.</li>
+          <li><strong>Service at Your Location:</strong> We come to your home, workplace, or job site.</li>
+          <li><strong>Dedicated to Quality & Trust:</strong> Certified technicians committed to excellence.</li>
         </ul>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Book Your Service Today</h2>
-      <p style="text-align: center;">
-        Call or text <strong>(314) 329-8279</strong><br>
-        Email us at <a href="mailto:info@cardinalautofleet.com">info@cardinalautofleet.com</a>
-      </p>
-      <div style="text-align: center;">
-        <a href="/services" class="btn-primary">Get Started</a>
-      </div>
-    </section>
-  </div>
+    <section id="contact" aria-label="Contact and Booking" style="text-align: center;">
+  <h2>Book Your Service Today</h2>
+  <p>
+    Call or text <strong><a href="tel:+13143298279" style="color: var(--primary-color); text-decoration: underline;">(314) 329-8279</a></strong><br />
+    Email us at <a href="mailto:info@cardinalautofleet.com" style="color: var(--primary-color); text-decoration: underline;">info@cardinalautofleet.com</a>
+  </p>
+  <p style="margin-top: 1.5rem;">
+    <a href="/schedule" class="btn-primary" aria-label="Book your service online">Book Online</a>
+  </p>
+</section>
+</div>
+
+
 
   <footer>
-  <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
-  <p>
-    Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
-    <a href="/terms" style="color: #fff; text-decoration: underline;">Terms and Conditions</a> |
-    <a href="/privacy" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
-  </p>
-</footer>
+    <p>&copy; 2025 Cardinal Auto & Fleet Maintenance | Serving Greater St. Louis</p>
+    <p>
+      Email: info@cardinalautofleet.com | Phone: <a href="tel:+13143298279" style="color: #fff; text-decoration: underline;">(314) 329-8279</a> |
+      <a href="/terms">Terms and Conditions</a> |
+      <a href="/privacy">Privacy Policy</a>
+    </p>
+  </footer>
 
   <script>
     const hamburger = document.querySelector('.hamburger');
