@@ -49,11 +49,20 @@
   gap: 1.5rem;
 }
 
+
 @media (max-width: 768px) {
   .hamburger {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  #oil-card,
+  #brake-card,
+    #fluid-card {
+    width: 90%;
+    max-width: 768px;
+    margin: 0 auto;
   }
 
   .nav-links {
@@ -65,10 +74,13 @@
     padding: 1rem 0;
   }
 
-  .nav-links.show {
+  .nav-links.active {
     display: flex;
   }
 }
+  .nav-links.show {
+    display: flex;
+  }
 
     nav a {
       color: white;
@@ -206,7 +218,7 @@
     }
 
     .service-section {
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
 
     .cards {
@@ -249,6 +261,12 @@
     .card p {
       font-size: 1rem;
     }
+    
+    #addon-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+      margin-top: 2rem;
+    }
 
     .toggle-btn {
       margin-top: 0.75rem;
@@ -265,6 +283,7 @@
     .toggle-btn:hover {
       background-color: var(--secondary-color);
     }
+
 
     .card-content {
       display: none;
@@ -308,10 +327,21 @@
       transform: none !important;
     }
 
+    .brake-summary {
+      margin-bottom: 0.5rem;
+    }
+
     .oil-summary {
       margin-bottom: 0.5rem;
     }
 
+    .fluid-summary {
+      margin-bottom: 0.5rem;
+    }
+
+    .addon-summary {
+      margin-bottom: 1rem;
+    }
 
     #fluid-details {
       left: auto !important;
@@ -377,12 +407,12 @@
 
   <!-- Automotive Services -->
   <section class="service-section" id="automotive-services">
-    <h2 class="section-title">Automotive Services</h2>
+    <h2 class="section-title">Mobile Automotive Services</h2>
     <div class="cards">
 
       <!-- Oil Change -->
       <div class="card" id="oil-card">
-        <h3>Mobile Oil Change</h3>
+        <h3>Oil Change</h3>
         <p class="oil-summary">Full synthetic oil service starting at $75 + Oil and Filter.*</p>
         <p style="font-weight: bold;">Oil changes include:</p>
         <ul style="list-style: none; padding-left: 0;">
@@ -391,25 +421,8 @@
           <li>✓ Battery health check</li>
           <li>✓ Oil life monitor reset</li>
         </ul>
-        <button class="toggle-btn" id="toggle-oil-btn">See Add-Ons</button>
         <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">* Final price will vary based on vehicle</p>
         <div class="card-content" id="oil-details">
-          <table>
-            <thead>
-              <tr>
-                <th>Add-On</th>
-                <th>Individual Price</th>
-                <th>Bundle Price</th>
-                <th>Savings</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Air Filter</td><td>$35</td><td>$30</td><td>$5</td></tr>
-              <tr><td>Cabin Filter</td><td>$40</td><td>$35</td><td>$5</td></tr>
-              <tr><td>Wiper Blades</td><td>$50</td><td>$40</td><td>$10</td></tr>
-              <tr><td><strong>Full Bundle</strong></td><td>$125</td><td><strong>$95</strong></td><td><strong>$30</strong></td></tr>
-            </tbody>
-          </table>
           <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
             <em>Bundle pricing available when performed with oil and filter service.</em>
           </p>
@@ -418,8 +431,8 @@
 
       <!-- Brake Services -->
       <div class="card" id="brake-card">
-        <h3>Mobile Brake Services</h3>
-        <p>Starting at $225. Includes premium parts and labor warranty.</p>
+        <h3>Brake Services</h3>
+        <p class="brake-summary">Starting at $225. Includes premium parts and labor warranty.</p>
         <p style="font-weight: bold;">Brake service includes:</p>
         <ul style="list-style: none; padding-left: 0;">
           <li>✓ Brake fluid top-up</li>
@@ -442,6 +455,7 @@
               <tr><td>Pads & Rotors Replacement</td><td>$375</td><td>$700</td><td>$50</td></tr>
               <tr><td>Caliper Replacement (Each)</td><td>$150</td><td>—</td><td>—</td></tr>
               <tr><td>Pads, Rotors & Calipers</td><td>$500</td><td>$950</td><td>$50</td></tr>
+              <tr><td>Tire Rotation</td><td>$50</td><td>$40</td><td>$10</td></tr>
             </tbody>
           </table>
           <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
@@ -452,8 +466,8 @@
 
       <!-- Fluid Flushes -->
       <div class="card" id="fluid-card">
-        <h3>Mobile Fluid Flush Services</h3>
-        <p>Protect vital systems with professional fluid flushes. Bundle discounts avaible when bundled with oil change or brake service.</p>
+        <h3>Fluid Replacements</h3>
+        <p class="fluid-summary">Protect vital systems with professional fluid flushes. Bundle discounts avaible when bundled with oil change or brake service.</p>
         <button class="toggle-btn" id="toggle-fluid-btn">See Details</button>
         <div class="card-content" id="fluid-details">
           <table>
@@ -466,10 +480,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Brake Fluid Flush</td><td>$105</td><td>$90</td><td>$15</td></tr>
-              <tr><td>Coolant/Antifreeze Flush</td><td>$125</td><td>$110</td><td>$15</td></tr>
-              <tr><td>Transmission Fluid Flush</td><td>$175</td><td>$150</td><td>$25</td></tr>
-              <tr><td>Power Steering Fluid Flush</td><td>$95</td><td>$80</td><td>$15</td></tr>
+              <tr><td>Brake Fluid</td><td>$105</td><td>$90</td><td>$15</td></tr>
+              <tr><td>Coolant/Antifreeze</td><td>$125</td><td>$110</td><td>$15</td></tr>
+              <tr><td>Transmission Fluid</td><td>$175</td><td>$150</td><td>$25</td></tr>
             </tbody>
           </table>
           <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
@@ -479,7 +492,38 @@
       </div>
     </div>
 
-    <div id="special-offer-popup" class="special-offer-popup" style="display:none;">
+    <!-- Add-Ons Card -->
+<div class="card" id="addon-card">
+  <h3>Add-Ons</h3>
+  <p class="addon-summary">Our add-ons provide extra value and comprehensive care, saving you time and money by bundling important services together.</p>
+  <p>Each add-on is performed on-site with the same professional attention and quality you expect from our mobile service — all without the hassle of scheduling multiple appointments. Upgrade your service today for better performance, improved fuel efficiency, and peace of mind on the road.</p>
+  <button class="toggle-btn" id="toggle-addon-btn">See Add-Ons</button>
+  <div class="card-content" id="addon-details">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Standalone Price</th>
+          <th>With Other Service</th>
+          <th>Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Engine Air Filter<br><small style="color:#555;">Recommended every 15,000–30,000 miles</small></td><td>$40</td><td>$30</td><td>$10</td></tr>
+        <tr><td>Cabin Air Filter<br><small style="color:#555;">Recommended every 15,000–20,000 miles</small></td><td>$45</td><td>$35</td><td>$10</td></tr>
+        <tr><td>Both Air Filters<br><small style="color:#555;">Engine: 15–30k mi / Cabin: 15–20k mi</small></td><td>$80</td><td>$60</td><td>$20</td></tr>
+        <tr><td>Wiper Blades<br><small style="color:#555;">Recommended every 6–12 months</small></td><td>$50</td><td>$40</td><td>$10</td></tr>
+        <tr><td>Tire Rotation<br><small style="color:#555;">Recommended every 5,000–7,500 miles</small></td><td>$50</td><td>$40</td><td>$10</td></tr>
+        <tr><td>Battery Replacement<br><small style="color:#555;">Recommended every 3–5 years</small></td><td>Battery Cost + $45</td><td>Battery Cost + $30</td><td>$15</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
+      <em>Savings apply when performed with any oil, brake, or fluid service during the same appointment.</em>
+    </p>
+  </div>
+</div>
+
+<div id="special-offer-popup" class="special-offer-popup" style="display:none;">
       <strong id="special-offer-title">
         💥 Special Offer - Bundle &amp; Save!
       </strong>
@@ -522,89 +566,100 @@
 
 <script>
   // Show popup after 3 seconds
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const popup = document.getElementById('special-offer-popup');
-    if (popup) {
-      popup.style.display = 'block';
-    }
-  }, 3000);
-});
-
-// Safe DOM ready for other handlers
-document.addEventListener('DOMContentLoaded', () => {
-  const closeBtn = document.getElementById('close-offer-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
+  window.addEventListener('load', () => {
+    setTimeout(() => {
       const popup = document.getElementById('special-offer-popup');
-      if (popup) popup.style.display = 'none';
-    });
-  }
+      if (popup) popup.style.display = 'block';
+    }, 3000);
+  });
 
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
-      hamburger.setAttribute('aria-expanded', !expanded);
-      navLinks.classList.toggle('active');
-    });
-  }
-
-  const toggleButtons = [
-    {
-      card: document.getElementById('oil-card'),
-      details: document.getElementById('oil-details'),
-      button: document.getElementById('toggle-oil-btn'),
-      labelOpen: 'Hide Add-Ons',
-      labelClosed: 'See Add-Ons'
-    },
-    {
-      card: document.getElementById('brake-card'),
-      details: document.getElementById('brake-details'),
-      button: document.getElementById('toggle-brake-btn'),
-      labelOpen: 'Hide Details',
-      labelClosed: 'See Details'
-    },
-    {
-      card: document.getElementById('fluid-card'),
-      details: document.getElementById('fluid-details'),
-      button: document.getElementById('toggle-fluid-btn'),
-      labelOpen: 'Hide Details',
-      labelClosed: 'See Details'
-    }
-  ].filter(({ card, details, button }) => card && details && button); // filter out any incomplete entries
-
-  toggleButtons.forEach(({ card, details, button, labelOpen, labelClosed }, index, allButtons) => {
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = details.classList.contains('expanded');
-
-      allButtons.forEach(({ card, details, button, labelClosed }) => {
-        details.classList.remove('expanded');
-        card.classList.remove('expanded');
-        button.textContent = labelClosed;
+  document.addEventListener('DOMContentLoaded', () => {
+    // Close popup button
+    const closeBtn = document.getElementById('close-offer-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        const popup = document.getElementById('special-offer-popup');
+        if (popup) popup.style.display = 'none';
       });
+    }
 
-      if (!isOpen) {
-        details.classList.add('expanded');
-        card.classList.add('expanded');
-        button.textContent = labelOpen;
+    // Hamburger toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+if (hamburger && navLinks) {
+  hamburger.setAttribute('aria-expanded', 'false');  // initialize aria-expanded
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    navLinks.classList.toggle('active');
+  });
+}
+
+    // Cards toggle setup
+    const toggleButtons = [
+      {
+        card: document.getElementById('addon-card'),
+        details: document.getElementById('addon-details'),
+        button: document.getElementById('toggle-addon-btn'),
+        labelOpen: 'Hide Add-Ons',
+        labelClosed: 'See Add-Ons'
+      },
+      {
+        card: document.getElementById('brake-card'),
+        details: document.getElementById('brake-details'),
+        button: document.getElementById('toggle-brake-btn'),
+        labelOpen: 'Hide Details',
+        labelClosed: 'See Details'
+      },
+      {
+        card: document.getElementById('fluid-card'),
+        details: document.getElementById('fluid-details'),
+        button: document.getElementById('toggle-fluid-btn'),
+        labelOpen: 'Hide Details',
+        labelClosed: 'See Details'
+      }
+    ].filter(({ card, details, button }) => card && details && button);
+
+    toggleButtons.forEach(({ card, details, button, labelOpen, labelClosed }) => {
+      button.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = details.classList.contains('expanded');
+
+        // Close all cards first
+        toggleButtons.forEach(({ card, details, button, labelClosed }) => {
+          details.classList.remove('expanded');
+          card.classList.remove('expanded');
+          button.textContent = labelClosed;
+        });
+
+        // Toggle current card if it was closed
+        if (!isOpen) {
+          details.classList.add('expanded');
+          card.classList.add('expanded');
+          button.textContent = labelOpen;
+
+          // Scroll only for addon card
+          if (card.id === 'addon-card') {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Close cards if clicking outside
+    document.addEventListener('click', event => {
+      const clickedInside = toggleButtons.some(({ card }) => card.contains(event.target));
+      if (!clickedInside) {
+        toggleButtons.forEach(({ card, details, button, labelClosed }) => {
+          details.classList.remove('expanded');
+          card.classList.remove('expanded');
+          button.textContent = labelClosed;
+        });
       }
     });
   });
-
-  document.addEventListener('click', function(event) {
-    const isClickInside = toggleButtons.some(({ card }) => card.contains(event.target));
-    if (!isClickInside) {
-      toggleButtons.forEach(({ card, details, button, labelClosed }) => {
-        details.classList.remove('expanded');
-        card.classList.remove('expanded');
-        button.textContent = labelClosed;
-      });
-    }
-  });
-});
 </script>
+
+
 </body>
 </html>
