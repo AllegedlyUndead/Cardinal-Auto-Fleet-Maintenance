@@ -49,35 +49,6 @@
   gap: 1.5rem;
 }
 
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #oil-card,
-  #brake-card,
-    #fluid-card {
-    width: 90%;
-    max-width: 768px;
-    margin: 0 auto;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    background-color: var(--secondary-color);
-    padding: 1rem 0;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
   .nav-links.show {
     display: flex;
   }
@@ -186,10 +157,7 @@
       font-weight: 700;
       margin-bottom: 0.6rem;
       line-height: 1.2;
-    }
-
-    #special-offer-title .line-break {
-      display: block;
+      text-align: center;
     }
 
     nav a {
@@ -268,6 +236,19 @@
       margin-top: .5rem;
     }
 
+   #addon-details {
+  display: block !important;
+  position: static !important;
+  transform: none !important;
+  min-width: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-top: 0.5rem;
+}
+
     .toggle-btn {
       margin-top: 0.75rem;
       background-color: var(--primary-color);
@@ -321,6 +302,7 @@
     .expanded {
       display: block;
     }
+    
 
     #oil-details {
       left: 0 !important;
@@ -379,6 +361,33 @@
       header h1 {
         font-size: 2rem;
       }
+
+      .hamburger {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #oil-card,
+  #brake-card,
+    #fluid-card {
+    width: 90%;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 1rem 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
     }
   </style>
 </head>
@@ -411,23 +420,64 @@
     <div class="cards">
 
       <!-- Oil Change -->
-      <div class="card" id="oil-card">
-        <h3>Oil Change</h3>
-        <p class="oil-summary">Full synthetic oil service starting at $75 + Oil and Filter.*</p>
-        <p style="font-weight: bold;">Oil changes include:</p>
-        <ul style="list-style: none; padding-left: 0;">
-          <li>✓ Tire pressure top-up</li>
-          <li>✓ Washer fluid top-up</li>
-          <li>✓ Battery health check</li>
-          <li>✓ Oil life monitor reset</li>
-        </ul>
-        <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">* Final price will vary based on vehicle</p>
-        <div class="card-content" id="oil-details">
-          <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
-            <em>Bundle pricing available when performed with oil and filter service.</em>
-          </p>
-        </div>
-      </div>
+<div class="card" id="oil-card">
+  <h3>Oil Change</h3>
+  <p class="oil-summary">Full synthetic oil service starting at $99*</p>
+  <p style="font-weight: bold;">Oil changes include:</p>
+  <ul style="list-style: none; padding-left: 0;">
+    <li>✓ Tire pressure top-up</li>
+    <li>✓ Washer fluid top-up</li>
+    <li>✓ Battery health check</li>
+    <li>✓ Oil life monitor reset</li>
+  </ul>
+  <button class="toggle-btn" id="toggle-oil-btn">See Details</button>
+  <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">* Final price will vary based on vehicle</p>
+
+  <!-- Hidden by default, shown via JS toggle -->
+  <div class="card-content" id="oil-details" class="collapsed">
+
+    <!-- Pricing Table -->
+    <div style="overflow-x: auto; margin-top: 1rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <thead style="background-color: #b20000; color: white;">
+          <tr>
+            <th style="padding: 0.75rem;">Vehicle</th>
+            <th style="padding: 0.75rem;">Included Oil (up to)</th>
+            <th style="padding: 0.75rem;">Starting Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background-color: #fff;">
+            <td style="padding: 0.75rem;">Sedans & Small SUVs</td>
+            <td style="padding: 0.75rem;">6 quarts</td>
+            <td style="padding: 0.75rem;">$99</td>
+          </tr>
+          <tr style="background-color: #f1f1f1;">
+            <td style="padding: 0.75rem;">Full-Sized SUVs & Light Trucks</td>
+            <td style="padding: 0.75rem;">8 quarts</td>
+            <td style="padding: 0.75rem;">$129</td>
+          </tr>
+          <tr style="background-color: #fff;">
+            <td style="padding: 0.75rem;">European/Performace Vehicles</td>
+            <td style="padding: 0.75rem;">10 quarts</td>
+            <td style="padding: 0.75rem;">$149</td>
+          </tr>
+          <tr style="background-color: #fff;">
+            <td style="padding: 0.75rem;">Bring Your Own Oil</td>
+            <td style="padding: 0.75rem;">-</td>
+            <td style="padding: 0.75rem;">$50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Note -->
+    <p style="font-size: 0.85rem; text-align: center; margin-top: 0.75rem; color: #555;">
+      Prices include mobile service and up to the specified amount of synthetic oil. Additional oil or specialty filters may result in extra charges.
+    </p>
+  </div>
+</div>
+
 
       <!-- Brake Services -->
       <div class="card" id="brake-card">
@@ -496,8 +546,6 @@
 <div class="card" id="addon-card">
   <h3>Add-Ons</h3>
   <p class="addon-summary">Our add-ons provide extra value and comprehensive care, saving you time and money by bundling important services together.</p>
-  <p>Each add-on is performed on-site with the same professional attention and quality you expect from our mobile service — all without the hassle of scheduling multiple appointments. Upgrade your service today for better performance, improved fuel efficiency, and peace of mind on the road.</p>
-  <button class="toggle-btn" id="toggle-addon-btn">See Add-Ons</button>
   <div class="card-content" id="addon-details">
     <table>
       <thead>
@@ -525,34 +573,15 @@
 
 <div id="special-offer-popup" class="special-offer-popup" style="display:none;">
       <strong id="special-offer-title">
-        💥 Special Offer - Bundle &amp; Save!
+        <strong>Refer &amp; Save!</strong> 
       </strong>
       <p class="offer-text">
-        Save up to <strong>$25</strong> when you combine a fluid flush with any oil change or brake service, done same day at your location.
+        Refer your friends and family to us and save <strong>$10!</strong> Ask your technican about our referal program at the time of your service! 
       </p>
+      <p><small>Offer can </small></p>
       <button id="close-offer-btn" class="close-btn" aria-label="Close special offer popup">Close</button>
     </div>
   </section>
-
-  <!-- Fleet Services -->
-  <section class="service-section" id="fleet-services">
-    <h2 class="section-title">Fleet Services</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Fleet Maintenance Plans</h3>
-        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
-      </div>
-      <div class="card">
-        <h3>Priority Mobile Service</h3>
-        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
-      </div>
-      <div class="card">
-        <h3>Volume Discounts</h3>
-        <p>Coming Soon<br>Feel free to inquire about our Fleet Services by contacting us.</p>
-      </div>
-    </div>
-  </section>
-
 </div>
 
 <footer>
@@ -565,7 +594,7 @@
 </footer>
 
 <script>
-  // Show popup after 3 seconds
+  // Show popup after 3 seconds when page loads
   window.addEventListener('load', () => {
     setTimeout(() => {
       const popup = document.getElementById('special-offer-popup');
@@ -574,7 +603,7 @@
   });
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Close popup button
+    // Close popup on button click
     const closeBtn = document.getElementById('close-offer-btn');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
@@ -583,26 +612,35 @@
       });
     }
 
-    // Hamburger toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-if (hamburger && navLinks) {
-  hamburger.setAttribute('aria-expanded', 'false');  // initialize aria-expanded
-  hamburger.addEventListener('click', () => {
-    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    navLinks.classList.toggle('active');
-  });
-}
+    // Hamburger menu toggle for mobile navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        navLinks.classList.toggle('active');
+      });
+    }
 
-    // Cards toggle setup
+    // Scroll offset amount (adjust as needed)
+    const SCROLL_OFFSET = 100;
+
+    // Track scroll state per card to prevent cumulative scrolls
+    const scrollState = {
+      'oil-card': false,
+      'brake-card': false,
+    };
+
+    // Toggle logic for service cards details
     const toggleButtons = [
       {
-        card: document.getElementById('addon-card'),
-        details: document.getElementById('addon-details'),
-        button: document.getElementById('toggle-addon-btn'),
-        labelOpen: 'Hide Add-Ons',
-        labelClosed: 'See Add-Ons'
+        card: document.getElementById('oil-card'),
+        details: document.getElementById('oil-details'),
+        button: document.getElementById('toggle-oil-btn'),
+        labelOpen: 'Hide Details',
+        labelClosed: 'See Details'
       },
       {
         card: document.getElementById('brake-card'),
@@ -625,32 +663,49 @@ if (hamburger && navLinks) {
         e.stopPropagation();
         const isOpen = details.classList.contains('expanded');
 
+        // Detect if switching from one open card to another
+        const isSwitchingCard = !isOpen && toggleButtons.some(({ details }) => details.classList.contains('expanded'));
+
         // Close all cards first
         toggleButtons.forEach(({ card, details, button, labelClosed }) => {
+          if (details.classList.contains('expanded')) {
+            // Only scroll up if not switching cards (i.e., fully closing)
+            if ((card.id === 'oil-card' || card.id === 'brake-card') && scrollState[card.id] && !isSwitchingCard) {
+              window.scrollBy({ top: -SCROLL_OFFSET, behavior: 'smooth' });
+              scrollState[card.id] = false;
+            }
+          }
           details.classList.remove('expanded');
           card.classList.remove('expanded');
           button.textContent = labelClosed;
         });
 
-        // Toggle current card if it was closed
+        // Open clicked card if it was closed
         if (!isOpen) {
           details.classList.add('expanded');
           card.classList.add('expanded');
           button.textContent = labelOpen;
 
-          // Scroll only for addon card
-          if (card.id === 'addon-card') {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Scroll down only if not already scrolled down for this card
+          if ((card.id === 'oil-card' || card.id === 'brake-card') && !scrollState[card.id]) {
+            window.scrollBy({ top: SCROLL_OFFSET, behavior: 'smooth' });
+            scrollState[card.id] = true;
           }
         }
       });
     });
 
-    // Close cards if clicking outside
+    // Close all cards if user clicks outside any card
     document.addEventListener('click', event => {
       const clickedInside = toggleButtons.some(({ card }) => card.contains(event.target));
       if (!clickedInside) {
         toggleButtons.forEach(({ card, details, button, labelClosed }) => {
+          if (details.classList.contains('expanded')) {
+            if ((card.id === 'oil-card' || card.id === 'brake-card') && scrollState[card.id]) {
+              window.scrollBy({ top: -SCROLL_OFFSET, behavior: 'smooth' });
+              scrollState[card.id] = false;
+            }
+          }
           details.classList.remove('expanded');
           card.classList.remove('expanded');
           button.textContent = labelClosed;
@@ -661,5 +716,8 @@ if (hamburger && navLinks) {
 </script>
 
 
+
+
+</script>
 </body>
 </html>
