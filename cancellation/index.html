@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking & Cancellation Policy | Cardinal Auto Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #C41E3A;
+      --secondary-color: #2C2C2C;
+      --background-light: #EEE7D7;
+      --accent-color: #FFB300;
+      --text-color: #1C1C1C;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      margin-bottom: -0.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .booking-policy {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 2rem auto;
+  color: var(--text-color);
+}
+
+.booking-policy .section-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.booking-policy p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.booking-policy h3.policy-subheading {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.booking-policy ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.booking-policy ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.cancellation-policy {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 2rem auto;
+  color: var(--text-color);
+}
+
+.cancellation-policy .section-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.cancellation-policy p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.cancellation-policy h3.policy-subheading {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.cancellation-policy ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cancellation-policy ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; margin: 0 auto; }
+      .nav-links { display: none; flex-direction: column; width: 100%; text-align: center; background: var(--secondary-color); padding: 1rem 0; }
+      .nav-links.show { display: flex; }
+      nav { flex-direction: column; gap: 1rem; }
+      header h1 { font-size: 2rem; }
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: var(--accent-color); }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .policy-section h3 {
+      color: var(--primary-color);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .policy-heading {
+        text-align: center;
+    }
+
+    .policy-section p,
+    .policy-section li {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .policy-section ul {
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+    footer a { color: #fff; text-decoration: underline; }
+
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      position: fixed;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    #toast.show { visibility: visible; opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cardinal Auto Maintenance</h1>
+    <p>Vehicle Maintenance Delivered to Your Doorstep</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/schedule">Schedule</a>
+      <a href="tel:+13143298279">Call Us</a>
+    </div>
+  </nav>
+
+  <main class="container policy-section">
+    <h2>Booking & Cancellation Policy</h2>
+
+    <section class="booking-policy container">
+  <h2 class="section-title">Booking Policy</h2>
+
+  <p>
+    Thank you for choosing Cardinal Auto &amp; Fleet Maintenance for your mobile vehicle service needs. To ensure the best experience for all our customers, please review our booking policies:
+  </p>
+
+  <h3 class="policy-subheading">Appointment Scheduling</h3>
+  <ul>
+    <li>All appointments must be scheduled in advance via our website, phone, or approved booking platforms.</li>
+    <li>We recommend booking at least 48 hours ahead to secure your preferred date and time.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Service Location &amp; Access</h3>
+  <ul>
+    <li>Please ensure your vehicle is accessible and parked in a safe, legal location at the scheduled appointment time.</li>
+    <li>If our technician cannot access your vehicle or location safely, the appointment may need to be rescheduled, and applicable fees may apply.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Cancellations &amp; Rescheduling</h3>
+  <ul>
+    <li>Cancellations made less than 24 hours before your appointment may incur a cancellation fee.</li>
+    <li>No-shows will be charged the full service fee.</li>
+    <li>To reschedule, please contact us as soon as possible to avoid fees and delays.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Deposits</h3>
+  <ul>
+    <li>Certain services, such as brake jobs or repairs requiring special-order parts, require a non-refundable deposit to secure your appointment.</li>
+    <li>Deposits are applied toward your final invoice but will be retained if the appointment is canceled after parts are ordered.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Payment</h3>
+  <ul>
+    <li>Payment is due upon completion of the service. We accept cash, major credit cards, and electronic payments.</li>
+    <li>Please ensure you have your preferred payment method ready at the time of service.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Service Delays</h3>
+  <ul>
+    <li>We strive to arrive within the scheduled window but appreciate your understanding in case of unforeseen delays.</li>
+    <li>If you have concerns about timing, please contact us directly.</li>
+  </ul>
+</section>
+
+    
+    <section class="cancellation-policy container">
+  <h2 class="section-title">Cancellation Policy</h2>
+
+  <p>
+    At Cardinal Auto &amp; Fleet Maintenance, we take pride in offering reliable mobile services and planning each appointment with care.
+    Missed appointments or last-minute cancellations impact our ability to serve other clients efficiently.
+  </p>
+
+  <h3 class="policy-subheading">Oil Changes &amp; Standard Services</h3>
+  <ul>
+    <li>Cancellations made less than 24 hours in advance may be subject to a $40 fee.</li>
+    <li>Failure to be available at the scheduled time will result in the full fee being charged.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Brake Jobs &amp; Repairs Requiring Parts Orders</h3>
+  <ul>
+    <li>A non-refundable deposit is required to book services that require specific parts (such as brake pads, rotors, filters, etc.).</li>
+    <li>This deposit will be applied to your final invoice.</li>
+    <li>If the appointment is canceled after parts have been purchased, the deposit will be retained to cover the cost of parts ordered.</li>
+  </ul>
+
+  <h3 class="policy-subheading">Why This Policy?</h3>
+  <p>
+    We are a mobile service business, and each appointment requires time, travel, preparation, and often the ordering of non-returnable parts.
+    This policy ensures we can continue offering affordable and dependable service to all our clients.
+  </p>
+
+  <p>Thank you for understanding and respecting our time.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cardinal Auto Maintenance | Serving Greater St. Louis</p>
+    <p>Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
+      <a href="/terms">Terms</a> |
+      <a href="/privacy">Privacy</a> |
+      <a href="/cancellation">Cancellation Policy</a>
+    </p>
+  </footer>
+
+  <div id="toast"></div>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
+
