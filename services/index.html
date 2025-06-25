@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | Cardinal Auto Maintenance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary-color: #C41E3A;
       --secondary-color: #2C2C2C;
-      --background-light: #EEE7D7;
       --accent-color: #FFB300;
       --text-color: #1C1C1C;
     }
@@ -18,6 +17,31 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #EEE7D7;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      margin-bottom: -0.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      opacity: 0.95;
     }
 
     nav {
@@ -30,6 +54,11 @@
       position: sticky;
       top: 0;
       z-index: 100;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      color: var(--accent-color);
     }
 
     .hamburger {
@@ -49,11 +78,7 @@
       gap: 1.5rem;
     }
 
-    .nav-links.show {
-      display: flex;
-    }
-
-    nav a {
+    .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: 600;
@@ -61,240 +86,214 @@
       transition: color 0.3s ease;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       color: var(--accent-color);
     }
 
-    .special-offer-popup {
-      position: fixed;
-      bottom: 40px;
-      right: 20px;
-      max-width: 400px;
-      background-color: #C41E3A;
-      color: white;
-      padding: 1.5rem 1.5rem 1.25rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-      font-family: 'Inter', sans-serif;
-      z-index: 9999;
-    }
-
-    #special-offer-title {
-      display: block;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    #special-offer-title .line-break {
-      display: block;
-    }
-
-    .offer-text {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-
-    .close-btn {
-      background-color: white;
-      color: #C41E3A;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      float: right;
-      transition: background-color 0.3s ease;
-    }
-
-    .close-btn:hover,
-    .close-btn:focus {
-      background-color: #f0f0f0;
-      outline: none;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #EEE7D7;
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--primary-color);
-      color: white;
-      padding: 1rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.75rem;
-      margin-bottom: -0.5rem;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 1.15rem;
-      opacity: 0.95;
-    }
-
-    #special-offer-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      line-height: 1.2;
-      text-align: center;
-    }
-
     .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
 
-    h2.section-title {
-      font-size: 2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-    .service-section {
-      margin-top: 2rem;
-    }
+.card h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
+.card p {
+  font-size: 1rem;
+}
 
-    .card {
-      position: relative;
-      background: #fff;
-      padding: 1.5rem;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      flex: 1 1 300px;
-      max-width: 350px;
-      text-align: center;
-      cursor: default;
-      transition: box-shadow 0.3s ease, border 0.3s ease;
-      overflow: visible;
-    }
+.card-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
 
-    .card:hover {
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      border: 2px solid var(--accent-color);
-    }
+.card-content th,
+.card-content td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+}
 
-    .card.expanded {
-      border: 2px solid var(--accent-color);
-    }
+.card-content th {
+  background-color: #EEE7D7;
+  color: var(--primary-color);
+}
 
-    .card h3 {
-      color: var(--primary-color);
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
+.addon-summary {
+  margin-bottom: 0.5rem;
+}
 
-    .card p {
-      font-size: 1rem;
-    }
+.dual-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0rem;
+  margin-bottom: -.25rem;
+}
 
-    #addon-card {
-      flex: 1 1 100%;
-      max-width: 100%;
-      margin-top: .5rem;
-    }
+.dual-column {
+  flex: 1 1 45%;
+  max-width: 50%;
+}
 
-    #addon-details {
-      display: block !important;
-      position: static !important;
-      transform: none !important;
-      min-width: auto !important;
-      max-height: none !important;
-      overflow: visible !important;
-      box-shadow: none !important;
-      border: none !important;
-      padding: 0 !important;
-      margin-top: 0.5rem;
-    }
+.tooltip-euro {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
 
-    .toggle-btn {
-      margin-top: 0.75rem;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+.tooltip-euro .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
 
-    .toggle-btn:hover {
-      background-color: var(--secondary-color);
-    }
+  /* Position to the right */
+  top: 50%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-50%);
 
-    .card-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 700px;
-      background: white;
-      border: 2px solid var(--accent-color);
-      border-radius: 10px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      z-index: 10;
-      padding: 1rem;
-    }
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 260px;
+}
 
-    .card-content table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
+/* Arrow pointing left */
+.tooltip-euro .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
 
-    .card-content th,
-    .card-content td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      text-align: center;
-    }
+.tooltip-euro:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
 
-    .card-content th {
-      background-color: var(--background-light);
-      color: var(--primary-color);
-    }
+.tooltip-performance {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
 
-    .expanded {
-      display: block;
-    }
+.tooltip-performance .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
 
-    #oil-details {
-      left: 0 !important;
-      transform: none !important;
-    }
+  /* Position to the right */
+  top: 90%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-90%);
 
-    .brake-summary,
-    .oil-summary,
-    .fluid-summary,
-    .addon-summary {
-      margin-bottom: 0.5rem;
-    }
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 260px;
+}
 
-    #fluid-details {
-      left: auto !important;
-      right: 0 !important;
-      transform: none !important;
-    }
+/* Arrow pointing left */
+.tooltip-performance .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
+
+.tooltip-performance:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.request-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  text-decoration: underline;
+  color: inherit;
+}
+
+.request-tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
+
+  /* Position to the right */
+  top: 95%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-95%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 350px;
+}
+
+/* Arrow pointing left */
+.request-tooltip .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
+
+.request-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
 
     footer {
       background: var(--primary-color);
@@ -305,40 +304,21 @@
       font-size: 0.95rem;
     }
 
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
       nav {
         flex-direction: column;
         gap: 1rem;
       }
 
-      .card-content {
-        position: static;
-        transform: none;
-        min-width: 100%;
-        margin-top: 1rem;
-        box-shadow: none;
-      }
-
-      .card-content table {
-        font-size: 0.9rem;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
       .hamburger {
         display: block;
         margin-left: auto;
         margin-right: auto;
-      }
-
-      #oil-card,
-      #brake-card,
-      #fluid-card {
-        width: 90%;
-        max-width: 768px;
-        margin: 0 auto;
       }
 
       .nav-links {
@@ -353,10 +333,24 @@
       .nav-links.active {
         display: flex;
       }
+      #oil-pricing, #brake-services {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .dual-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 0rem;
+}
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Cardinal Auto Maintenance</h1>
     <p>Vehicle Maintenance Delivered to Your Doorstep</p>
@@ -365,340 +359,283 @@
   <nav aria-label="Main navigation">
     <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <div class="nav-links">
-      <a href="/" aria-current="page">Home</a>
-      <a href="/services">Services</a>
+      <a href="/">Home</a>
+      <a href="/services" aria-current="page">Services</a></li>
       <a href="/about">About</a>
       <a href="/schedule">Schedule</a>
       <a href="tel:+13143298279">Call Us</a>
     </div>
   </nav>
 
-  <section style="background-color: #fff3cd; color: #856404; text-align: center; padding: 0.75rem 1rem; font-size: 0.95rem; border-bottom: 1px solid #ffeeba;">
-    <p><strong>Notice:</strong> We're currently updating our website to serve you better, please pardon the mess!</p>
+  <div class="dual-columns" style="background-color: #EEE7D7; padding: 1rem; font-family: 'Inter', sans-serif; color: #1C1C1C;">
+
+
+  <section id="oil-pricing" class="dual-column" style="padding-right: 1rem;">
+  <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Mobile Oil Change</h2>
+
+    <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+      Enjoy the convenience of a professional oil change performed right at your home or workplace. Our service includes premium synthetic oil, top-tier filters, washer fluid refill, tire pressure top-up, and battery check, all without leaving your driveway.
+    </p>
+
+    <div style="overflow-x: auto; flex-grow: 1;">
+      <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #C41E3A; color: white;">
+          <tr>
+            <th style="padding: 1rem; text-align: left; width: 33.33%;">Vehicle Type</th>
+            <th style="padding: 1rem; text-align: center; width: 33.33%;">Includes</th>
+            <th style="padding: 1rem; text-align: center; width: 33.33%;">Price<strong>*</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Sedans & Small SUVs</td>
+            <td style="padding: 1rem; text-align: center;">Up to 6 quarts</td>
+            <td style="padding: 1rem; text-align: center;">$99</td>
+          </tr>
+          <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">
+              <span class="tooltip-euro" style="text-decoration: underline;">European
+                <span class="tooltip-text">
+                  Includes standard models from BMW, Audi, Mercedes, VW, and other European brands.<br><br>
+                <strong>Excludes performance variants (e.g., BMW M, Audi RS, Mercedes AMG).</strong>
+                </span>
+              </span>
+            </td>
+            <td style="padding: 1rem; text-align: center;">Up to 7 quarts</td>
+            <td style="padding: 1rem; text-align: center;">$115</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Full-Sized SUVs & Light Trucks</td>
+            <td style="padding: 1rem; text-align: center;">Up to 8 quarts</td>
+            <td style="padding: 1rem; text-align: center;">$129</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">
+              <span class="tooltip-performance" style="text-decoration: underline;">Performance
+                <span class="tooltip-text">
+                  Includes sports cars, high-output engines, and vehicles with 9–10+ quart oil capacity.<br><br>
+                  Examples: Dodge Charger/Challenger V8, Ford Mustang GT, Chevrolet Camaro SS, RAM 1500 V8, Toyota Tundra, Lexus GX, BMW M-Series, Audi RS.
+                </span>
+              </span>
+            </td>
+            <td style="padding: 1rem; text-align: center;">Up to 10 quarts</td>
+            <td style="padding: 1rem; text-align: center;">$149</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">
+              <span class="request-tooltip">Request Specific Brands
+                <span class="tooltip-text">
+                  We use only premium synthetic oils by default, but if you prefer a particular brand, we’re happy to accommodate your choice:<br><br>
+                  <strong>Popular brands</strong> (e.g., Mobil 1, Pennzoil): additional $10<br><br>
+                  <strong>Specialty brands</strong> (e.g., Royal Purple, Liqui Moly): additional $25<br><br>
+                  These charges help cover the extra cost of sourcing and providing these premium oils.
+                </span>
+              </span>
+            </td>
+            <td style="padding: 1rem; text-align: center;">–</td>
+            <td style="padding: 1rem; text-align: center;">+$10–$25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: #2C2C2C; flex-shrink: 0;">
+      <strong>*</strong>Exact pricing will be confirmed at the time of booking based on your vehicle and service needs.
+    </p>
+  </div>
+</section>
+
+  <section id="brake-services" class="dual-column" style="padding-left: 1rem;">
+    <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Mobile Brake Services</h2>
+
+      <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+        Experience expert brake maintenance and repairs without leaving your home or workplace. Our mobile brake service brings skilled technicians directly to your door, equipped with quality parts and tools to ensure your vehicle’s braking system is safe, reliable, and performing at its best.
+      </p>
+
+      <div style="overflow-x: auto; flex-grow: 1;">
+        <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+          <thead style="background-color: #C41E3A; color: white;">
+            <tr>
+              <th style="padding: 1rem; text-align: left; width: 40%;">Service Option</th>
+              <th style="padding: 1rem; text-align: center; width: 20%;">Front or Rear</th>
+              <th style="padding: 1rem; text-align: center; width: 20%;">Front + Rear</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">Brake Pads Replacement</td>
+              <td style="padding: 1rem; text-align: center;">$225</td>
+              <td style="padding: 1rem; text-align: center;">$425</td>
+            </tr>
+            <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">Pads & Rotors Replacement</td>
+              <td style="padding: 1rem; text-align: center;">$375</td>
+              <td style="padding: 1rem; text-align: center;">$700</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">Caliper Replacement (Each)</td>
+              <td style="padding: 1rem; text-align: center;">$150</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">Pads, Rotors & Calipers</td>
+              <td style="padding: 1rem; text-align: center;">$500</td>
+              <td style="padding: 1rem; text-align: center;">$950</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: #2C2C2C; flex-shrink: 0;">
+        All brake services use quality OEM or aftermarket parts. Prices may vary depending on vehicle type and condition.
+      </p>
+    </div>
   </section>
 
-  <div class="container">
+</div>
 
-  <!-- Services Section -->
-<section class="service-section" id="automotive-services">
-  <h2 class="section-title">Mobile Automotive Services</h2>
-  <div class="cards">
 
-    <!-- Oil Change Card -->
-    <div class="card" id="oil-card">
-      <h3>Oil Change</h3>
-      <p class="oil-summary">Full synthetic oil service starting at $99*</p>
-      <p style="font-weight: bold;">Oil changes include:</p>
-      <ul style="list-style: none; padding-left: 0;">
-        <li>✓ Tire pressure top-up</li>
-        <li>✓ Washer fluid top-up</li>
-        <li>✓ Battery health check</li>
-        <li>✓ Oil life monitor reset</li>
-      </ul>
-      <button class="toggle-btn" id="toggle-oil-btn">See Details</button>
-      <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">* Final price will vary based on vehicle</p>
-      <div class="card-content" id="oil-details">
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
-            <thead style="background-color: #b20000; color: white;">
-              <tr>
-                <th style="padding: 0.75rem;">Vehicle</th>
-                <th style="padding: 0.75rem;">Included Oil (up to)</th>
-                <th style="padding: 0.75rem;">Starting Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background-color: #f1f1f1;">
-                <td style="padding: 0.75rem;">Sedans &amp; Small SUVs</td>
-                <td style="padding: 0.75rem;">6 quarts</td>
-                <td style="padding: 0.75rem;">$99</td>
-              </tr>
-              <tr style="background-color: #fff;">
-                <td style="padding: 0.75rem;">
-                  <span style="text-decoration: underline; cursor: help;" onclick="toggleTooltip(this)" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') { toggleTooltip(this); event.preventDefault(); }">
-                    European
-                  </span>
-                  <div class="tooltip-text" style="display: none; padding: 0.5rem 1rem; font-size: 0.85rem; color: #333; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 500px; line-height: 1.4; white-space: normal; margin-top: 0.5rem;">
-                    <strong>VW, Audi A3/A4, BMW 3/5 Series (non-M), Mercedes C/E-Class (non-AMG), etc.</strong>
-                  </div>
-                </td>
-                <td style="padding: 0.75rem;">7 quarts</td>
-                <td style="padding: 0.75rem;">$115</td>
-              </tr>
-              <tr style="background-color: #f1f1f1;">
-                <td style="padding: 0.75rem;">Full-Sized SUVs &amp; Light Trucks</td>
-                <td style="padding: 0.75rem;">8 quarts</td>
-                <td style="padding: 0.75rem;">$129</td>
-              </tr>
-              <tr style="background-color: #fff;">
-                <td style="padding: 0.75rem;">
-                  <span style="text-decoration: underline; cursor: help;" onclick="toggleTooltip(this)" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') { toggleTooltip(this); event.preventDefault(); }">
-                    Performance/Specialty
-                  </span>
-                  <div class="tooltip-text" style="display: none; padding: 0.5rem 1rem; font-size: 0.85rem; color: #333; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 500px; line-height: 1.4; white-space: normal; margin-top: 0.5rem;">
-                    <strong>Audi S/RS, BMW M, AMG, Porsche, WRX/STI, Mustang GT, Corvette, and other high-output or specialty models.</strong>
-                  </div>
-                </td>
-                <td style="padding: 0.75rem;">10 quarts</td>
-                <td style="padding: 0.75rem;">$149</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.75rem;">
-                  <span style="text-decoration: underline; cursor: help;" onclick="toggleTooltip(this)" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" onkeydown="if(event.key==='Enter' || event.key===' ') { toggleTooltip(this); event.preventDefault(); }">
-                    Request Specific Brands (Fee Applies)
-                  </span>
-                  <div class="tooltip-text" style="display: none; padding: 0.5rem 1rem; font-size: 0.85rem; color: #333; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); max-width: 500px; line-height: 1.4; white-space: normal; margin-top: 0.5rem;">
-                    We use only premium synthetic oils but understand that sometimes you prefer a specific brand:<br><br>
-                    <strong>Popular brands</strong> (Mobil 1, Pennzoil, etc): +$10<br>
-                    <strong>Specialty brands</strong> (Royal Purple, Liqui Moly, etc): +$25<br><br>
-                    These fees help cover the cost of sourcing and providing premium oils.
-                  </div>
-                </td>
-                <td style="padding: 0.75rem;">-</td>
-                <td style="padding: 0.75rem;">-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p style="font-size: 0.85rem; text-align: center; margin-top: 0.75rem; color: #555;">
-          Prices include mobile service and up to the specified amount of synthetic oil.<br>Additional oil or specialty filters may result in extra charges.</br>
-        </p>
-      </div>
-    </div>
+<section id="addon-services" style="background-color: #EEE7D7; padding: 1rem; width: 100%;">
+  <div style="margin: 0 auto; font-family: 'Inter', sans-serif; color: #1C1C1C;">
 
-    <!-- Brake Services Card -->
-    <div class="card" id="brake-card">
-      <h3>Brake Services</h3>
-      <p class="brake-summary">Starting at $225. Includes premium parts and labor warranty.</p>
-      <p style="font-weight: bold;">Brake service includes:</p>
-      <ul style="list-style: none; padding-left: 0;">
-        <li>✓ Brake fluid top-up</li>
-        <li>✓ Brake system inspection</li>
-        <li>✓ Lifetime warranty on pads</li>
-      </ul>
-      <button class="toggle-btn" id="toggle-brake-btn">See Details</button>
-      <div class="card-content" id="brake-details">
-        <table>
-          <thead>
+    <!-- White box wrapper -->
+    <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+
+      <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Add-On Services</h2>
+
+      <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem;">
+        Enhance your vehicle’s performance and longevity with our convenient add-on maintenance services. Each service is designed to keep your car running smoothly and safely between major visits — and when bundled with oil changes or brake services, you save even more.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; overflow-x: auto;">
+        <!-- Left Table -->
+        <table style="flex: 1; min-width: 300px; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+          <thead style="background-color: #C41E3A; color: white;">
             <tr>
-              <th>Service Option</th>
-              <th>Front or Rear</th>
-              <th>Front + Rear</th>
-              <th>Savings</th>
+              <th style="padding: 1rem; text-align: left;">Service</th>
+              <th style="padding: 1rem; text-align: center;">Bundle Price</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Brake Pads Replacement</td><td>$225</td><td>$425</td><td>$25</td></tr>
-            <tr><td>Pads & Rotors Replacement</td><td>$375</td><td>$700</td><td>$50</td></tr>
-            <tr><td>Caliper Replacement (Each)</td><td>$150</td><td>—</td><td>—</td></tr>
-            <tr><td>Pads, Rotors & Calipers</td><td>$500</td><td>$950</td><td>$50</td></tr>
-            <tr><td>Tire Rotation</td><td>-</td><td>$50</td><td>-</td></tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Engine Air Filter<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 15,000–30,000 miles</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$35</td>
+            </tr>
+            <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Cabin Air Filter<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 15,000–20,000 miles</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$40</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Both Air Filters<br>
+                <span style="color: #666; font-size: 0.9rem;">Engine: 15–30k mi / Cabin: 15–20k mi</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$65</td>
+            </tr>
+            <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Wiper Blades<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 6–12 months</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$45</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Tire Rotation<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 5,000–7,500 miles</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$45</td>
+            </tr>
           </tbody>
         </table>
-        <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
-          <em>Savings apply when front and rear services are performed during the same appointment.</em>
-        </p>
-      </div>
-    </div>
 
-    <!-- Fluid Replacements Card -->
-    <div class="card" id="fluid-card">
-      <h3>Fluid Replacements</h3>
-      <p class="fluid-summary">Protect vital systems with professional fluid flushes. Bundle discounts avaible when bundled with oil change or brake service.</p>
-      <button class="toggle-btn" id="toggle-fluid-btn">See Details</button>
-      <div class="card-content" id="fluid-details">
-        <table>
-          <thead>
+        <!-- Right Table -->
+        <table style="flex: 1; min-width: 300px; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+          <thead style="background-color: #C41E3A; color: white;">
             <tr>
-              <th>Service</th>
-              <th>Standalone Price</th>
-              <th>With Other Service</th>
-              <th>Savings</th>
+              <th style="padding: 1rem; text-align: left;">Service</th>
+              <th style="padding: 1rem; text-align: center;">Bundle Price</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Brake Fluid</td><td>$105</td><td>$90</td><td>$15</td></tr>
-            <tr><td>Coolant/Antifreeze</td><td>$125</td><td>$110</td><td>$15</td></tr>
-            <tr><td>Transmission Fluid</td><td>$175</td><td>$150</td><td>$25</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
-          <em>Bundled pricing applies when performed with any oil or brake service during the same appointment.</em>
-        </p>
-      </div>
-    </div>
-
-    <!-- Add-Ons Card -->
-    <div class="card" id="addon-card">
-      <h3>Add-Ons</h3>
-      <p class="addon-summary">Our add-ons provide extra value and comprehensive care, saving you time and money by bundling important services together.</p>
-      <div class="card-content" id="addon-details">
-        <table>
-          <thead>
-            <tr>
-              <th>Service</th>
-              <th>Standalone Price</th>
-              <th>With Other Service</th>
-              <th>Savings</th>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Battery Terminal Cleaning<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended annually or if corrosion is present</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$25</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr><td>Engine Air Filter<br><small style="color:#555;">Recommended every 15,000–30,000 miles</small></td><td>$40</td><td>$30</td><td>$10</td></tr>
-            <tr><td>Cabin Air Filter<br><small style="color:#555;">Recommended every 15,000–20,000 miles</small></td><td>$45</td><td>$35</td><td>$10</td></tr>
-            <tr><td>Both Air Filters<br><small style="color:#555;">Engine: 15–30k mi / Cabin: 15–20k mi</small></td><td>$80</td><td>$60</td><td>$20</td></tr>
-            <tr><td>Wiper Blades<br><small style="color:#555;">Recommended every 6–12 months</small></td><td>$50</td><td>$40</td><td>$10</td></tr>
-            <tr><td>Tire Rotation<br><small style="color:#555;">Recommended every 5,000–7,500 miles</small></td><td>$50</td><td>$40</td><td>$10</td></tr>
-            <tr><td>Battery Replacement<br><small style="color:#555;">Recommended every 3–5 years</small></td><td>Battery Cost + $45</td><td>Battery Cost + $30</td><td>$15</td></tr>
+            <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Battery Replacement<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 3–5 years</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">Battery Cost + $40</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Brake Fluid Flush<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 2 to 3 years</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$95</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Coolant Drain & Fill<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 30,000 to 50,000 miles</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$110</td>
+            </tr>
+            <tr style="background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+              <td style="padding: 1rem;">
+                Transmission Drain & Fill<br>
+                <span style="color: #666; font-size: 0.9rem;">Recommended every 30,000 to 60,000 miles</span>
+              </td>
+              <td style="padding: 1rem; text-align: center;">$155</td>
+            </tr>
           </tbody>
         </table>
-        <p style="font-size: 0.9rem; text-align: center; margin-top: 0.5rem; color: #555;">
-          <em>Savings apply when performed with any oil, brake, or fluid service during the same appointment.</em>
-        </p>
       </div>
-    </div>
 
+      <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: #2C2C2C;">
+        Add-on pricing is only available when bundled with oil changes or brake services. Final price will be confirmed at booking.
+      </p>
+    </div>
   </div>
-  </section>
+</section>
 
-      <!-- Referral Offer Popup -->
-      <div id="special-offer-popup" class="special-offer-popup" style="display:none;">
-        <strong id="special-offer-title">
-          <strong>Refer &amp; Save!</strong> 
-        </strong>
-        <p class="offer-text">
-          Refer your friends and family to us and save <strong>$10!</strong> Ask your technican about our referal program at the time of your service! 
-        </p>
-        <button id="close-offer-btn" class="close-btn" aria-label="Close special offer popup">Close</button>
-      </div>
-    </section>
-  </div>
-
+</div>
   <footer>
     <p>&copy; 2025 Cardinal Auto Maintenance | Serving Greater St. Louis</p>
     <p>
       Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
-      <a href="/terms" style="color: #fff; text-decoration: underline;">Terms and Conditions</a> |
-      <a href="/privacy" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
+      <a href="/terms">Terms and Conditions</a> |
+      <a href="/privacy">Privacy Policy</a>
     </p>
   </footer>
 
   <script>
-    // Show popup after 3 seconds
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const popup = document.getElementById('special-offer-popup');
-        if (popup) popup.style.display = 'block';
-      }, 3000);
-    });
-
     document.addEventListener('DOMContentLoaded', () => {
-      // Close popup
-      const closeBtn = document.getElementById('close-offer-btn');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          const popup = document.getElementById('special-offer-popup');
-          if (popup) popup.style.display = 'none';
-        });
-      }
-
-      // Hamburger menu toggle
       const hamburger = document.querySelector('.hamburger');
       const navLinks = document.querySelector('.nav-links');
+
       if (hamburger && navLinks) {
         hamburger.setAttribute('aria-expanded', 'false');
+
         hamburger.addEventListener('click', () => {
           const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          hamburger.setAttribute('aria-expanded', !expanded);
           navLinks.classList.toggle('active');
         });
       }
-
-      const SCROLL_OFFSET = 200;
-      const scrollState = {
-        'oil-card': false,
-        'brake-card': false,
-      };
-
-      const toggleButtons = [
-        {
-          card: document.getElementById('oil-card'),
-          details: document.getElementById('oil-details'),
-          button: document.getElementById('toggle-oil-btn'),
-          labelOpen: 'Hide Details',
-          labelClosed: 'See Details'
-        },
-        {
-          card: document.getElementById('brake-card'),
-          details: document.getElementById('brake-details'),
-          button: document.getElementById('toggle-brake-btn'),
-          labelOpen: 'Hide Details',
-          labelClosed: 'See Details'
-        },
-        {
-          card: document.getElementById('fluid-card'),
-          details: document.getElementById('fluid-details'),
-          button: document.getElementById('toggle-fluid-btn'),
-          labelOpen: 'Hide Details',
-          labelClosed: 'See Details'
-        }
-      ].filter(({ card, details, button }) => card && details && button);
-
-      toggleButtons.forEach(({ card, details, button, labelOpen, labelClosed }) => {
-        button.addEventListener('click', e => {
-          e.stopPropagation();
-          const isOpen = details.classList.contains('expanded');
-          const isSwitchingCard = !isOpen && toggleButtons.some(({ details }) => details.classList.contains('expanded'));
-
-          toggleButtons.forEach(({ card, details, button, labelClosed }) => {
-            if (details.classList.contains('expanded')) {
-              if ((card.id === 'oil-card' || card.id === 'brake-card') && scrollState[card.id] && !isSwitchingCard) {
-                window.scrollBy({ top: -SCROLL_OFFSET, behavior: 'smooth' });
-                scrollState[card.id] = false;
-              }
-            }
-            details.classList.remove('expanded');
-            card.classList.remove('expanded');
-            button.textContent = labelClosed;
-          });
-
-          if (!isOpen) {
-            details.classList.add('expanded');
-            card.classList.add('expanded');
-            button.textContent = labelOpen;
-            if ((card.id === 'oil-card' || card.id === 'brake-card') && !scrollState[card.id]) {
-              window.scrollBy({ top: SCROLL_OFFSET, behavior: 'smooth' });
-              scrollState[card.id] = true;
-            }
-          }
-        });
-      });
-
-      document.addEventListener('click', event => {
-        const clickedInside = toggleButtons.some(({ card }) => card.contains(event.target));
-        if (!clickedInside) {
-          toggleButtons.forEach(({ card, details, button, labelClosed }) => {
-            if (details.classList.contains('expanded')) {
-              if ((card.id === 'oil-card' || card.id === 'brake-card') && scrollState[card.id]) {
-                window.scrollBy({ top: -SCROLL_OFFSET, behavior: 'smooth' });
-                scrollState[card.id] = false;
-              }
-            }
-            details.classList.remove('expanded');
-            card.classList.remove('expanded');
-            button.textContent = labelClosed;
-          });
-        }
-      });
     });
-
-    function toggleTooltip(element) {
-      const tooltip = element.nextElementSibling;
-      if (tooltip.style.display === "none" || tooltip.style.display === "") {
-        tooltip.style.display = "block";
-      } else {
-        tooltip.style.display = "none";
-      }
-    }
-  </script>
+</script>
 </body>
 </html>
