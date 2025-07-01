@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Cardinal Auto Maintenance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #C41E3A;
+      --secondary-color: #2C2C2C;
+      --accent-color: #FFB300;
+      --text-color: #1C1C1C;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #EEE7D7;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.75rem;
+      margin-bottom: -0.5rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a:hover,
+    nav a[aria-current="page"] {
+      color: var(--accent-color);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+.card-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.card-content th,
+.card-content td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.card-content th {
+  background-color: #EEE7D7;
+  color: var(--primary-color);
+}
+
+.addon-summary {
+  margin-bottom: 0.5rem;
+}
+
+.dual-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0rem;
+  margin-bottom: -.25rem;
+}
+
+.dual-column {
+  flex: 1 1 45%;
+  max-width: 50%;
+}
+
+.tooltip-euro {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip-euro .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
+
+  /* Position to the right */
+  top: 50%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-50%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 260px;
+}
+
+/* Arrow pointing left */
+.tooltip-euro .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
+
+.tooltip-euro:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-performance {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip-performance .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
+
+  /* Position to the right */
+  top: 90%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-90%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 260px;
+}
+
+/* Arrow pointing left */
+.tooltip-performance .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
+
+.tooltip-performance:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.request-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  text-decoration: underline;
+  color: inherit;
+}
+
+.request-tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: #2C2C2C;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 10;
+
+  /* Position to the right */
+  top: 95%;
+  left: 105%;        /* Slightly to the right outside the word */
+  transform: translateY(-95%);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  max-width: 260px;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  min-width: 350px;
+}
+
+/* Arrow pointing left */
+.request-tooltip .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #2C2C2C;
+}
+
+.request-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hamburger {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--secondary-color);
+        padding: 1rem 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+      #oil-pricing, #brake-services {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+  .dual-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 0rem;
+}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cardinal Auto Maintenance</h1>
+    <p>Vehicle Maintenance Delivered to Your Doorstep</p>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/services">Services</a></li>
+      <a href="/membership"aria-current="page">Membership</a>
+      <a href="/about">About</a>
+      <a href="/schedule">Schedule</a>
+      <a href="tel:+13143298279">Call Us</a>
+    </div>
+  </nav>
+
+  <div class="dual-columns" style="background-color: #EEE7D7; padding: 1rem; font-family: 'Inter', sans-serif; color: #1C1C1C;">
+
+
+ <section id="oil-pricing" class="dual-column" style="padding-right: 1rem;">
+  <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Sedan & Crossover</h2>
+
+    <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+      Enjoy the convenience of a professional oil change performed right at your home or workplace. Choose from three service plans below:
+    </p>
+
+    <div style="flex-grow: 1; display: flex; justify-content: center;">
+      <table style="width: 100%; max-width: 600px; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+
+        <thead style="background-color: #C41E3A; color: white;">
+          <tr>
+            <th style="padding: 1rem; text-align: left;">Plan</th>
+            <th style="padding: 1rem; text-align: left;">Price*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Essentials Row -->
+          <tr class="plan-row" onclick="toggleDetails('essentials-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+    <td style="padding: 1rem; text-align: left;">Essentials</td>
+    <td style="padding: 1rem; text-align: left;">$278</td>
+  </tr>
+  <tr id="essentials-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+    <td colspan="2" style="padding: 1rem 1rem 1rem 2rem; border-bottom: 1px solid #eee; text-align: left;">
+  <div style="display: inline-block; text-align: center;">
+    <strong>What's Included:</strong><br>
+    - 3 mobile oil changes per year<br>
+    - Full synthetic oil premium filter<br>
+    - Priority scheduling<br>
+  </div>
+</td>
+  </tr>
+
+          <!-- Plus Row -->
+          <tr class="plan-row" onclick="toggleDetails('plus-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+    <td style="padding: 1rem; text-align: left;">Plus</td>
+    <td style="padding: 1rem; text-align: left;">$312</td>
+  </tr>
+  <tr id="plus-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+    <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee; text-align: center;">
+      <strong>Everything in Essentials, plus:</strong><br>
+      • 1 cabin air filter replacement per year<br>
+      <em>Perfect for cleaner cabin air and fresher drives.</em>
+    </td>
+  </tr>
+
+          <!-- Premium Row -->
+          <tr class="plan-row" onclick="toggleDetails('premium-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+    <td style="padding: 1rem; text-align: left;">Premium</td>
+    <td style="padding: 1rem; text-align: left;">$333</td>
+  </tr>
+  <tr id="premium-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+    <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee; text-align: center;">
+      <strong>Everything in Plus, plus:</strong><br>
+      • 1 engine air filter replacement per year<br>
+      <em>Best for engine protection and long-term performance.</em>
+    </td>
+  </tr>
+
+          <!-- Add-on -->
+          <tr class="plan-row" onclick="toggleDetails('addon-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+    <td style="padding: 1rem; text-align: left;">4th Oil Change (Add-On)</td>
+    <td style="padding: 1rem; text-align: left;">$89</td>
+  </tr>
+  <tr id="addon-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+    <td colspan="2" style="padding: 1rem; text-align: center;">
+      <strong>Optional:</strong> Add a 4th oil change to any plan for just $89 — great for high-mileage drivers or extra protection year-round.
+    </td>
+  </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+  <section id="oil-pricing" class="dual-column" style="padding-right: 1rem;">
+  <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Sedan & Crossover</h2>
+
+    <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+      Enjoy the convenience of a professional oil change performed right at your home or workplace. Choose from three service plans below:
+    </p>
+
+    <div style="overflow-x: auto; flex-grow: 1;">
+      <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #C41E3A; color: white;">
+          <tr>
+            <th style="padding: 1rem; text-align: left;">Plan</th>
+            <th style="padding: 1rem; text-align: center;">Price*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Essentials Row -->
+          <tr class="plan-row" onclick="toggleDetails('essentials-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Essentials</td>
+            <td style="padding: 1rem; text-align: center;">$278</td>
+          </tr>
+          <tr id="essentials-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>What's Included:</strong><br>
+              • 3 mobile oil changes with premium full synthetic oil<br>
+              • Wix oil filter<br>
+              • Washer fluid refill<br>
+              • Tire pressure top-up<br>
+              • Battery health check
+            </td>
+          </tr>
+
+          <!-- Plus Row -->
+          <tr class="plan-row" onclick="toggleDetails('plus-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Plus</td>
+            <td style="padding: 1rem; text-align: center;">$312</td>
+          </tr>
+          <tr id="plus-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Essentials, plus:</strong><br>
+              • 1 cabin air filter replacement per year<br>
+              <em>Perfect for cleaner cabin air and fresher drives.</em>
+            </td>
+          </tr>
+
+          <!-- Premium Row -->
+          <tr class="plan-row" onclick="toggleDetails('premium-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Premium</td>
+            <td style="padding: 1rem; text-align: center;">$333</td>
+          </tr>
+          <tr id="premium-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Plus, plus:</strong><br>
+              • 1 engine air filter replacement per year<br>
+              <em>Best for engine protection and long-term performance.</em>
+            </td>
+          </tr>
+
+          <!-- Add-on -->
+          <tr class="plan-row" onclick="toggleDetails('addon-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">4th Oil Change (Add-On)</td>
+            <td style="padding: 1rem; text-align: center;">$89</td>
+          </tr>
+          <tr id="addon-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem;">
+              <strong>Optional:</strong> Add a 4th oil change to any plan for just $89 — great for high-mileage drivers or extra protection year-round.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="dual-columns" style="background-color: #EEE7D7; padding: 1rem; font-family: 'Inter', sans-serif; color: #1C1C1C;">
+
+
+  <section id="oil-pricing" class="dual-column" style="padding-right: 1rem;">
+  <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Sedan & Crossover</h2>
+
+    <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+      Enjoy the convenience of a professional oil change performed right at your home or workplace. Choose from three service plans below:
+    </p>
+
+    <div style="overflow-x: auto; flex-grow: 1;">
+      <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #C41E3A; color: white;">
+          <tr>
+            <th style="padding: 1rem; text-align: left;">Plan</th>
+            <th style="padding: 1rem; text-align: center;">Price*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Essentials Row -->
+          <tr class="plan-row" onclick="toggleDetails('essentials-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Essentials</td>
+            <td style="padding: 1rem; text-align: center;">$278</td>
+          </tr>
+          <tr id="essentials-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>What's Included:</strong><br>
+              • 3 mobile oil changes with premium full synthetic oil<br>
+              • Wix oil filter<br>
+              • Washer fluid refill<br>
+              • Tire pressure top-up<br>
+              • Battery health check
+            </td>
+          </tr>
+
+          <!-- Plus Row -->
+          <tr class="plan-row" onclick="toggleDetails('plus-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Plus</td>
+            <td style="padding: 1rem; text-align: center;">$312</td>
+          </tr>
+          <tr id="plus-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Essentials, plus:</strong><br>
+              • 1 cabin air filter replacement per year<br>
+              <em>Perfect for cleaner cabin air and fresher drives.</em>
+            </td>
+          </tr>
+
+          <!-- Premium Row -->
+          <tr class="plan-row" onclick="toggleDetails('premium-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Premium</td>
+            <td style="padding: 1rem; text-align: center;">$333</td>
+          </tr>
+          <tr id="premium-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Plus, plus:</strong><br>
+              • 1 engine air filter replacement per year<br>
+              <em>Best for engine protection and long-term performance.</em>
+            </td>
+          </tr>
+
+          <!-- Add-on -->
+          <tr class="plan-row" onclick="toggleDetails('addon-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">4th Oil Change (Add-On)</td>
+            <td style="padding: 1rem; text-align: center;">$89</td>
+          </tr>
+          <tr id="addon-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem;">
+              <strong>Optional:</strong> Add a 4th oil change to any plan for just $89 — great for high-mileage drivers or extra protection year-round.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+  <section id="oil-pricing" class="dual-column" style="padding-right: 1rem;">
+  <div style="background-color: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: #C41E3A;">Sedan & Crossover</h2>
+
+    <p style="text-align: center; margin-bottom: 1rem; font-size: 1rem; flex-shrink: 0;">
+      Enjoy the convenience of a professional oil change performed right at your home or workplace. Choose from three service plans below:
+    </p>
+
+    <div style="overflow-x: auto; flex-grow: 1;">
+      <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #C41E3A; color: white;">
+          <tr>
+            <th style="padding: 1rem; text-align: left;">Plan</th>
+            <th style="padding: 1rem; text-align: center;">Price*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Essentials Row -->
+          <tr class="plan-row" onclick="toggleDetails('essentials-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Essentials</td>
+            <td style="padding: 1rem; text-align: center;">$278</td>
+          </tr>
+          <tr id="essentials-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>What's Included:</strong><br>
+              • 3 mobile oil changes with premium full synthetic oil<br>
+              • Wix oil filter<br>
+              • Washer fluid refill<br>
+              • Tire pressure top-up<br>
+              • Battery health check
+            </td>
+          </tr>
+
+          <!-- Plus Row -->
+          <tr class="plan-row" onclick="toggleDetails('plus-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Plus</td>
+            <td style="padding: 1rem; text-align: center;">$312</td>
+          </tr>
+          <tr id="plus-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Essentials, plus:</strong><br>
+              • 1 cabin air filter replacement per year<br>
+              <em>Perfect for cleaner cabin air and fresher drives.</em>
+            </td>
+          </tr>
+
+          <!-- Premium Row -->
+          <tr class="plan-row" onclick="toggleDetails('premium-details')" style="cursor: pointer; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">Premium</td>
+            <td style="padding: 1rem; text-align: center;">$333</td>
+          </tr>
+          <tr id="premium-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem; border-bottom: 1px solid #eee;">
+              <strong>Everything in Plus, plus:</strong><br>
+              • 1 engine air filter replacement per year<br>
+              <em>Best for engine protection and long-term performance.</em>
+            </td>
+          </tr>
+
+          <!-- Add-on -->
+          <tr class="plan-row" onclick="toggleDetails('addon-details')" style="cursor: pointer; background-color: #F9F9F9; border-bottom: 1px solid #ddd;">
+            <td style="padding: 1rem;">4th Oil Change (Add-On)</td>
+            <td style="padding: 1rem; text-align: center;">$89</td>
+          </tr>
+          <tr id="addon-details" class="plan-details-row" style="display: none; background-color: #fefefe;">
+            <td colspan="2" style="padding: 1rem;">
+              <strong>Optional:</strong> Add a 4th oil change to any plan for just $89 — great for high-mileage drivers or extra protection year-round.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+</div>
+  <footer>
+    <p>&copy; 2025 Cardinal Auto Maintenance | Serving Greater St. Louis</p>
+    <p>
+      Email: info@cardinalautofleet.com | Phone: (314) 329-8279 |
+      <a href="/terms">Terms and Conditions</a> |
+      <a href="/privacy">Privacy Policy</a>
+    </p>
+  </footer>
+
+  <script>
+
+     function toggleDetails(rowId) {
+    const row = document.getElementById(rowId);
+    const allDetails = document.querySelectorAll('.plan-details-row');
+    allDetails.forEach(r => {
+      if (r.id !== rowId) r.style.display = 'none';
+    });
+    row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
+  }
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+
+      if (hamburger && navLinks) {
+        hamburger.setAttribute('aria-expanded', 'false');
+
+        hamburger.addEventListener('click', () => {
+          const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', !expanded);
+          navLinks.classList.toggle('active');
+        });
+      }
+    });
+</script>
+</body>
+</html>
